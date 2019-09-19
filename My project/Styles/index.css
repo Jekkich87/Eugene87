@@ -7,11 +7,15 @@
 
 .logo {
     width: 25%;
-    background: chartreuse;
+    position: relative;
+    /*background: chartreuse;*/
 }
 
 .logo>img {
     width: 200px;
+    position: absolute;
+    top: 18px;
+    left: 18px;
 }
 
 .nav>ul {
@@ -34,7 +38,7 @@ li>a {
 
 .nav {
     width: 50%;
-    background-color: blue;
+    /*background-color: blue;*/
     align-items: center;
     display: flex;
     align-items: center;
@@ -43,7 +47,7 @@ li>a {
 
 .search {
     width: 25%;
-    background-color: magenta;
+    /*background-color: magenta;*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,4 +56,5 @@ li>a {
 .search>img {
     width: 25px;
     height: 25px;
+    padding-right: 5px;
 }
