@@ -2,8 +2,17 @@
     width: 100%;
     height: 100px;
     background-color: blueviolet;
+    display: flex;
 }
 
 a {
     font-size: 30px;
+}
+
+.logo>img {
+    width: 200px;
+}
+
+.nav>ul {
+    display: flex;
 }
