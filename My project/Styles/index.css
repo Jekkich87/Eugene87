@@ -5,8 +5,9 @@
     display: flex;
 }
 
-a {
-    font-size: 30px;
+.logo {
+    width: 25%;
+    background: chartreuse;
 }
 
 .logo>img {
@@ -15,4 +16,40 @@ a {
 
 .nav>ul {
     display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 0px;
+}
+
+li>a {
+    color: yellow;
+    font-size: 30px;
+    text-decoration-line: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav>ul>li {
+    list-style-type: none;
+}
+
+.nav {
+    width: 50%;
+    background-color: blue;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search {
+    width: 25%;
+    background-color: magenta;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search>img {
+    width: 25px;
+    height: 25px;
 }
