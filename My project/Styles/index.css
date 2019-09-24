@@ -1,8 +1,28 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
 .header {
     width: 100%;
     height: 100px;
     background-color: blueviolet;
     display: flex;
+    position: fixed;
+    box-shadow: 0 0 010px -5px green;
+}
+
+.fict_header {
+    height: 100px;
+    width: 100%;
 }
 
 .logo {
@@ -16,6 +36,7 @@
     position: absolute;
     top: 18px;
     left: 18px;
+    border-radius: 15px;
 }
 
 .nav>ul {
@@ -36,6 +57,11 @@ li>a {
     list-style-type: none;
 }
 
+.nav>ul>li.active {
+    list-style-type: none;
+    border-bottom: 2px solid blue;
+}
+
 .nav {
     width: 50%;
     /*background-color: blue;*/
@@ -53,8 +79,33 @@ li>a {
     justify-content: center;
 }
 
+input {
+    border-bottom: 2px solid #0edd0ef6;
+}
+
 .search>img {
     width: 25px;
     height: 25px;
     padding-right: 5px;
+}
+
+.footer {
+    width: 100%;
+    height: 7vh;
+    background-color: aqua;
+}
+
+.main {
+    flex: 1;
+    margin-top: 100px;
+}
+
+.div1 {
+    margin: 50px;
+    width: 200px;
+    height: 200px;
+    box-shadow: 100px 20px 20px 0px blue;
+    border: 5px solid red;
+    border-bottom-color: #d8b954f6;
+    border-top-left-radius: 50px;
 }
