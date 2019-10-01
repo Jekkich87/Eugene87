@@ -126,3 +126,9 @@ input {
     border-bottom-color: #d8b954f6;
     border-top-left-radius: 50px;
 }
+
+.test-shadow {
+    margin: 50px;
+    width: 200px;
+    height: 200px;
+}
