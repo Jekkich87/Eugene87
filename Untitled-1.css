@@ -1,0 +1,72 @@
+html {
+    height: auto;
+    width: auto;
+}
+
+.body {
+    height: 500px;
+    width: 100vh;
+}
+
+.main {
+    height: auto;
+    width: min-content;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /*grid-template-rows: repeat(2, 1fr);*/
+    /*flex-wrap: wrap;*/
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.div {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    background-color: yellow;
+    margin-top: 30px;
+}
+
+.div:nth-child(2n) {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    background-color: blue;
+}
+
+.div:nth-child(3n) {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    background-color: green;
+}
+
+.div:nth-child(4n) {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    background-color: red;
+}
+
+
+/*.div:first-child {
+    border: 2px solid black;
+}*/
+
+.div:hover {
+    height: 100vh;
+    width: 900px;
+    transition: all ease 5s;
+}
+
+.A:hover {
+    text-decoration: none;
+}
+
+.div::after {
+    content: 'dfa'
+}
+
+.div::before {}

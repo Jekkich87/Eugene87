@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Main page</title>
     <link rel="stylesheet" href="./Styles/index.css">
+    <link rel="stylesheet" href="./Styles/contacts.css">
 </head>
 
 <body>
@@ -21,7 +22,7 @@
             <nav class="nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li class='active'><a href="contacts.html">Contacts</a></li>
+                    <li><a href="contacts.html">Contacts</a></li>
                 </ul>
             </nav>
             <div class="search">
@@ -41,6 +42,16 @@
                 </p>
 
                 <p class="formfield">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="last name" id="name" placeholder="name">
+                </p>
+
+                <p class="formfield">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email">
+                </p>
+
+                <p class="formfield">
                     <label for="agree">I agree</label>
                     <input type="checkbox" name="agree" id="agree">
                 </p>
@@ -55,7 +66,7 @@
                     <!--<input type="select" name="select" id="select">-->
                 </p>
 
-                <p class="form_field">
+                <p class="formfield">
                     <label for="select">Select</label>
                     <textarea name="" id="" cols="30" rows="10" class="textarea"></textarea>
                     <!--<input type="select" name="select" id="select">-->
