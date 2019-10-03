@@ -37,7 +37,8 @@
         <div class="fict_header"></div>
 
         <main class="main">
-
+            <h1>Main page</h1>
+            <a href="#modal" class="open-modal">Open modal</a>
 
         </main>
 
@@ -46,13 +47,12 @@
             <p class="p">2019</p>
         </footer>
 
-        <input type="checkbox" id="show_modal" hidden>
         <div class="modal" id="modal">
-
-            <div class="modal_header">
-                <span class="modal_title">Modal window</span>
-                <a href="#close" class="modal_close">X</a>
+            <div class="modal__header">
+                <span class="modal__title">Modal window</span>
+                <a href="#close" class="modal__close">X</a>
             </div>
+
             <div class="modal_content">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, officiis doloremque neque sint dignissimos eius voluptatum sed quos totam, labore eaque quasi nostrum hic sit sapiente veniam, beatae provident explicabo cupiditate magni minus! Velit, in
                 architecto. Corrupti non nisi ut expedita maxime cum numquam assumenda fugiat enim doloremque accusamus odit mollitia saepe sit vel aliquam, sint, illo rem esse magnam quis, deleniti deserunt officia! Dicta inventore odit voluptatibus
@@ -65,13 +65,16 @@
                 dicta quos fugiat amet accusantium molestiae consectetur. Veritatis esse repudiandae, omnis, velit odit possimus pariatur minima fugit nobis recusandae aliquid, commodi suscipit nesciunt error hic nam iste delectus veniam unde! Quaerat,
                 quis vel! Culpa animi iure quia quasi, voluptatibus architecto consequuntur itaque pariatur.
             </div>
-            <div class="modal_footer">
-                <a href="#ok" class="modal_button--success">Ok</a>
-                <a href="#cancel" class="modal_button--danger">Cancel</a>
-            </div>
 
+
+            <div class="modal__footer">
+                <a href="#ok" class="modal__button modal__button--success">OK</a>
+                <a href="#cancel" class="modal__button modal__button--danger">Cancel</a>
+            </div>
         </div>
-        <a href="#up" class="up">На початок</a>
+
+        <a href="#up" class="up-button">ВВЕРХ</a>
+    </div>
     </div>
 </body>
 

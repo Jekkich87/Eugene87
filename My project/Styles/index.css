@@ -139,77 +139,65 @@ input {
     left: 0;
     right: 0;
     bottom: -2000px;
-    margin: auto;
-    background: white;
-    width: 300px;
-    height: 500px;
     display: flex;
     flex-direction: column;
-    border: 1px solid;
-    transition: all 2s;
+    width: 300px;
+    height: 500px;
+    margin: auto;
+    background: #ffffff;
+    box-shadow: 0 0 6px 0 grey;
     opacity: 0;
+    transition: all 2s;
 }
 
-.modal_header {
-    height: 50px;
-    background: gray;
+.modal:target {
+    bottom: 0;
+    opacity: 1;
+}
+
+.modal__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5;
+    height: 50px;
+    padding: 0 5px;
+    background: #424250;
 }
 
-.modal_title,
-.modal_close {
-    color: whitesmoke;
+.modal__title,
+.modal__close {
+    color: #ffffff;
     font-size: 18px;
-    text-decoration-line: none;
-}
-
-.modal_footer {
-    height: 50px;
-    background: gray;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5;
-}
-
-.modal_button {
-    color: whitesmoke;
-    font-size: 20px;
-    text-decoration-line: none;
-    background: gray;
-    padding: 5px 10px;
-}
-
-.modal_button--success {
-    background: green;
-    text-decoration-line: none;
-}
-
-.modal_button--danger {
-    background: red;
-    text-decoration-line: none;
+    text-decoration: none;
 }
 
 .modal_content {
     flex: 1;
     max-height: 400px;
     overflow-y: scroll;
-    scroll-behavior: smooth;
 }
 
-
-/*.modal:target {
+.modal__footer {
     display: flex;
-    bottom: 0;
-    opacity: 1;
-}*/
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 5px;
+    background: #424250;
+}
 
-.show_modal:checked+div.modal {
-    display: block;
-    display: flex;
-    bottom: 0;
-    opacity: 1;
+.modal__button {
+    padding: 5px 10px;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: none;
+    font-size: 20px;
+}
+
+.modal__button--success {
+    background: #00ff00;
+}
+
+.modal__button--danger {
+    background: #ff0000;
 }
