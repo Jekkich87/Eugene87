@@ -307,5 +307,51 @@
 
 .main .projects__menu-p1 {
   width: 122px;
+  border: 2px, solid #cecece;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.main .projects__menu-p2 {
+  width: 155px;
+  border: 2px, solid #cecece;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.main .projects__menu-p3 {
+  width: 159px;
+  border: 2px, solid #cecece;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.main .projects__menu-p4 {
+  width: 152px;
+  border: 2px, solid #cecece;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.main .projects__menu-p5 {
+  width: 100px;
+  border: 2px, solid #cecece;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
 /*# sourceMappingURL=mainpage.css.map */
