@@ -1,0 +1,135 @@
+.mainheader {
+  height: 218px;
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  /*&__logo{
+        margin-left:-130px;
+    }*/
+}
+
+.mainheader__wrap {
+  width: 1160px;
+  height: 218px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 410px 220px;
+      grid-template-columns: 410px 220px;
+  grid-column-gap: 450px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mainheader__img {
+  width: 405px;
+  height: 95px;
+  margin: 0;
+  padding: 0;
+  margin-left: -60px;
+}
+
+.mainheader__contacts {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+.mainheader__div {
+  width: 70px;
+  height: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mainheader__div:nth-child(1) {
+  background-image: url(../icons/phone.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mainheader__div:nth-child(2) {
+  border-left: 1px solid #bcbec3;
+  border-right: 1px solid #bcbec3;
+  background-image: url(../icons/map0.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.mainheader__div:nth-child(2):hover {
+  background-image: url(../icons/map.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mainheader__div:nth-child(2):hover .mainheader__p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 210px;
+  height: 60px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 16px;
+  color: #d4d4d5;
+  font-weight: bold;
+  bottom: 35px;
+  border: 1px solid #d4d4d5;
+  position: absolute;
+}
+
+.mainheader__div:nth-child(2):hover .mainheader__p::before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid grey;
+}
+
+.mainheader__div:nth-child(2):hover .mainheader__p::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+}
+
+.mainheader__div:nth-child(3) {
+  background-image: url(../icons/mail.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mainheader__p {
+  position: absolute;
+  display: none;
+}
+/*# sourceMappingURL=main-mainheader.css.map */

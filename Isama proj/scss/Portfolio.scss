@@ -1,0 +1,35 @@
+html {
+  width      : 100%;
+  font-family: 'Open Sans', sans-serif;
+  overflow-x:hidden;
+
+}
+
+body{
+  margin:0;
+  padding:0;
+}
+
+.main {
+  width       : 100vw;
+  height      : auto;
+  display     : block;
+  /*text-align  : center;*/
+  text-justify: center;
+
+}
+
+.header {
+  margin:0;
+  }
+
+
+@import "main-topheader";
+
+@import "main-mainheader";
+
+@import "header-nav";
+
+@import "portfoliopage";
+
+@import "footer";
