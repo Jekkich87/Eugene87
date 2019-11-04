@@ -1,1 +1,135 @@
-/* No CSS *//*# sourceMappingURL=mainpage-services.css.map */
+.main .services {
+  /*margin-top:120px;*/
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 1160px;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main .services__head {
+  width: 800px;
+  height: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 140px 600px;
+      grid-template-columns: 140px 600px;
+  grid-column-gap: 20px;
+}
+
+.main .services__head-img {
+  width: 130px;
+  height: 115px;
+}
+
+.main .services__head__div {
+  width: 600px;
+  height: auto;
+  padding: 0;
+}
+
+.main .services__head-h2 {
+  font-size: 44pt;
+  color: #6d6e71;
+  padding: 0;
+  margin: 0;
+}
+
+.main .services__head-p {
+  font-size: 17pt;
+  color: #6d6e71;
+  padding: 0;
+  margin: 0;
+}
+
+.main .services__servart {
+  width: 1160px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (550px)[auto-fill];
+      grid-template-columns: repeat(auto-fill, 550px);
+  grid-column-gap: 60px;
+  grid-row-gap: 90px;
+  margin-top: 70px;
+}
+
+.main .services__servart .servartdiv {
+  width: 550px;
+  height: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100px 415px;
+      grid-template-columns: 100px 415px;
+  grid-column-gap: 20px;
+}
+
+.main .services__servart .servartdiv__ico1 {
+  width: 68px;
+  height: 81px;
+}
+
+.main .services__servart .servartdiv__ico2 {
+  width: 65px;
+  height: 86px;
+}
+
+.main .services__servart .servartdiv__ico3 {
+  width: 88px;
+  height: 97px;
+}
+
+.main .services__servart .servartdiv__ico4 {
+  width: 93px;
+  height: 69px;
+}
+
+.main .services__servart .servartdiv__ico5 {
+  width: 90px;
+  height: 93px;
+}
+
+.main .services__servart .servartdiv__ico6 {
+  width: 68px;
+  height: 81px;
+}
+
+.main .services__servart .servartdiv__cont-p1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #6d6e71;
+}
+
+.main .services__servart .servartdiv__cont-p2 {
+  margin: 0;
+  /*word-break: break-all;*/
+  hyphens: auto;
+  font-size: 16px;
+  color: #6d6e71;
+  margin-top: 20px;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
+.main .services__link {
+  font-size: 22pt;
+  color: #1faae2;
+  text-decoration: none;
+  margin-bottom: 120px;
+}
+
+.main .services__link:hover {
+  -webkit-text-decoration: underline red;
+          text-decoration: underline red;
+}
+/*# sourceMappingURL=mainpage-services.css.map */
