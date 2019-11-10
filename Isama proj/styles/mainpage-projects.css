@@ -12,6 +12,26 @@
       -ms-flex-align: center;
           align-items: center;
   background-color: #efefef;
+  padding-top: 30px;
+}
+
+.main .projects__link {
+  width: 1160px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 22pt;
+  color: #1faae2;
+  text-decoration: none;
+  margin-bottom: 120px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main .projects__link:hover {
+  -webkit-text-decoration: underline red;
+          text-decoration: underline red;
 }
 
 .main .projects__head {
@@ -54,31 +74,19 @@
   width: 760px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (auto)[5];
-      grid-template-columns: repeat(5, auto);
+  -ms-grid-columns: (auto)[4];
+      grid-template-columns: repeat(4, auto);
 }
 
-.main .projects__menu-p1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 122px;
-  height: 45px;
-  border: 2px solid #bbbbbb;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+.main .projects__menu-p {
+  cursor: pointer;
 }
 
-.main .projects__menu-p2 {
+.main .projects__menu-p.active {
+  display: block;
+}
+
+.main .projects__menu-p:nth-child(1) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,7 +106,12 @@
   -o-border-radius: 5px;
 }
 
-.main .projects__menu-p3 {
+.main .projects__menu-p:nth-child(1):hover {
+  background-color: #ffffff;
+  border: none;
+}
+
+.main .projects__menu-p:nth-child(2) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -118,7 +131,12 @@
   -o-border-radius: 5px;
 }
 
-.main .projects__menu-p4 {
+.main .projects__menu-p:nth-child(2):hover {
+  background-color: #ffffff;
+  border: none;
+}
+
+.main .projects__menu-p:nth-child(3) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -138,7 +156,12 @@
   -o-border-radius: 5px;
 }
 
-.main .projects__menu-p5 {
+.main .projects__menu-p:nth-child(3):hover {
+  background-color: #ffffff;
+  border: none;
+}
+
+.main .projects__menu-p:nth-child(4) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -156,6 +179,11 @@
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+}
+
+.main .projects__menu-p:nth-child(4):hover {
+  background-color: #ffffff;
+  border: none;
 }
 
 .main .projects .gallery {
@@ -180,6 +208,14 @@
   display: grid;
   -ms-grid-columns: (280px)[auto-fill];
       grid-template-columns: repeat(auto-fill, 280px);
+  grid-column-gap: 10px;
+  position: relative;
+  display: none;
+}
+
+.main .projects .gallery__div.active {
+  display: -ms-grid;
+  display: grid;
 }
 
 .main .projects .gallery__div .card {
@@ -197,7 +233,6 @@
   height: 210px;
   -ms-grid-row: 1;
   grid-area: 1;
-  background-image: url(../img/5elephants.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -230,5 +265,53 @@
   background-image: url(../icons/proj-more.png);
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.main .projects .gallery__div:nth-child(1) {
+  margin-top: 0;
+}
+
+.main .projects .gallery__div:nth-child(1) .card {
+  z-index: 1;
+}
+
+.main .projects .gallery__div:nth-child(1) .card .back {
+  background-image: url(../img/5elephants.png);
+}
+
+.main .projects .gallery__div:nth-child(2) {
+  margin-top: 0;
+}
+
+.main .projects .gallery__div:nth-child(2) .card {
+  z-index: 5;
+}
+
+.main .projects .gallery__div:nth-child(2) .card .back {
+  background-image: url(../img/falcon.jpg);
+}
+
+.main .projects .gallery__div:nth-child(3) {
+  margin-top: 0;
+}
+
+.main .projects .gallery__div:nth-child(3) .card {
+  z-index: 10;
+}
+
+.main .projects .gallery__div:nth-child(3) .card .back {
+  background-image: url(../img/alaseel.jpg);
+}
+
+.main .projects .gallery__div:nth-child(4) {
+  margin-top: 0;
+}
+
+.main .projects .gallery__div:nth-child(4) .card {
+  z-index: 15;
+}
+
+.main .projects .gallery__div:nth-child(4) .card .back {
+  background-image: url(../img/lavabox.jpg);
 }
 /*# sourceMappingURL=mainpage-projects.css.map */

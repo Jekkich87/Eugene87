@@ -31,10 +31,13 @@
         }
         
         &__link{
+            width:1160px;
+            display:flex;
             font-size:22pt;
             color: #1faae2;
             text-decoration:none;
             margin-bottom: 120px;
+            justify-content: center;
             &:hover{text-decoration:underline red; }
             
         }

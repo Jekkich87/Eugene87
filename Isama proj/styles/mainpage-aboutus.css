@@ -40,10 +40,17 @@
 }
 
 .main .aboutus__link {
+  width: 1160px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   font-size: 22pt;
   color: #1faae2;
   text-decoration: none;
   margin-bottom: 120px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .main .aboutus__link:hover {
