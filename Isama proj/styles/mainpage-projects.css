@@ -170,6 +170,7 @@
   height: auto;
   position: relative;
   z-index: 1;
+  margin-bottom: 20px;
 }
 
 .main .projects .gallery__div {
@@ -181,20 +182,20 @@
       grid-template-columns: repeat(auto-fill, 280px);
 }
 
-.main .projects .gallery__div-card {
+.main .projects .gallery__div .card {
   width: 280px;
   height: auto;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: '1 1' '2 3';
+  -ms-grid-rows: 2 1fr;
+      grid-template-rows: 2 1fr;
+  background-color: #ffffff;
 }
 
-.main .projects .gallery__div-card .back {
+.main .projects .gallery__div .card .back {
   width: 253px;
   height: 210px;
   -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: 1;
   background-image: url(../img/5elephants.png);
   background-position: center;
@@ -202,22 +203,32 @@
   background-size: cover;
   -ms-grid-column-align: center;
       justify-self: center;
+  margin-top: 13px;
+  margin-bottom: 13px;
 }
 
-.main .projects .gallery__div-card .link {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: 2;
+.main .projects .gallery__div .card__wrap {
+  width: 280px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+.main .projects .gallery__div .card__wrap-link {
   width: 137px;
   height: 60px;
   border-right: 2px solid #808080;
+  background-image: url(../icons/proj-link.png);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.main .projects .gallery__div-card .more {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
-  grid-area: 3;
+.main .projects .gallery__div .card__wrap-more {
   width: 137px;
   height: 60px;
+  background-image: url(../icons/proj-more.png);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 /*# sourceMappingURL=mainpage-projects.css.map */

@@ -7,12 +7,9 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  /*&__logo{
-        margin-left:-130px;
-    }*/
 }
 
-.mainheader__wrap {
+.mainheader .wrap {
   width: 1160px;
   height: 218px;
   display: -ms-grid;
@@ -26,9 +23,12 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  /*&__logo{
+          margin-left:-130px;
+        }*/
 }
 
-.mainheader__img {
+.mainheader .wrap__img {
   width: 405px;
   height: 95px;
   margin: 0;
@@ -36,14 +36,14 @@
   margin-left: -60px;
 }
 
-.mainheader__contacts {
+.mainheader .wrap__contacts {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
 }
 
-.mainheader__div {
+.mainheader .wrap__contacts-div {
   width: 70px;
   height: 40px;
   -webkit-box-align: center;
@@ -57,13 +57,13 @@
           justify-content: center;
 }
 
-.mainheader__div:nth-child(1) {
+.mainheader .wrap__contacts-div:nth-child(1) {
   background-image: url(../icons/phone.png);
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.mainheader__div:nth-child(2) {
+.mainheader .wrap__contacts-div:nth-child(2) {
   border-left: 1px solid #bcbec3;
   border-right: 1px solid #bcbec3;
   background-image: url(../icons/map0.png);
@@ -72,13 +72,13 @@
   position: relative;
 }
 
-.mainheader__div:nth-child(2):hover {
+.mainheader .wrap__contacts-div:nth-child(2):hover {
   background-image: url(../icons/map.png);
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.mainheader__div:nth-child(2):hover .mainheader__p {
+.mainheader .wrap__contacts-div:nth-child(2):hover p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,7 +98,7 @@
   position: absolute;
 }
 
-.mainheader__div:nth-child(2):hover .mainheader__p::before {
+.mainheader .wrap__contacts-div:nth-child(2):hover p::before {
   content: '';
   display: block;
   position: absolute;
@@ -110,7 +110,7 @@
   border-top: 10px solid grey;
 }
 
-.mainheader__div:nth-child(2):hover .mainheader__p::after {
+.mainheader .wrap__contacts-div:nth-child(2):hover p::after {
   content: '';
   display: block;
   position: absolute;
@@ -122,13 +122,13 @@
   border-top: 10px solid white;
 }
 
-.mainheader__div:nth-child(3) {
+.mainheader .wrap__contacts-div:nth-child(3) {
   background-image: url(../icons/mail.png);
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.mainheader__p {
+.mainheader .wrap__contacts-div p {
   position: absolute;
   display: none;
 }

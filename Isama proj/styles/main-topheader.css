@@ -1,4 +1,4 @@
-.header__topheader {
+.header .topheader {
   width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9,7 +9,7 @@
   background-color: #eceef4;
 }
 
-.header__wrap {
+.header .wrap {
   width: 1160px;
   height: 60px;
   display: -ms-grid;
@@ -19,7 +19,7 @@
   grid-column-gap: 450px;
 }
 
-.header__nav {
+.header .nav {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (100px)[4];
@@ -33,7 +33,7 @@
   grid-column-gap: 7px;
 }
 
-.header__block {
+.header .nav__block {
   width: 100px;
   height: 35px;
   display: -ms-grid;
@@ -53,34 +53,34 @@
   -o-border-radius: 5px;
 }
 
-.header__log {
+.header .nav__block-log {
   margin-left: 8px;
 }
 
-.header__a {
+.header .nav__block-a {
   text-decoration: none;
   color: #8a8b8d;
   text-decoration: none;
   font-weight: bold;
 }
 
-.header__a:nth-child(1) {
+.header .nav__block-a:nth-child(1) {
   margin-left: 23pt;
 }
 
-.header__a:nth-child(2) {
+.header .nav__block-a:nth-child(2) {
   margin-left: 15pt;
 }
 
-.header__a:nth-child(3) {
+.header .nav__block-a:nth-child(3) {
   margin-left: 10pt;
 }
 
-.header__a:nth-child(4) {
+.header .nav__block-a:nth-child(4) {
   margin-left: 18pt;
 }
 
-.header__social {
+.header .social {
   height: 60px;
   display: -ms-grid;
   display: grid;
@@ -95,7 +95,7 @@
   border-right: 1px solid #d7d9df;
 }
 
-.header__div {
+.header .social__div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
