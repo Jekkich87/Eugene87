@@ -132,6 +132,7 @@ header{font-family: 'Roboto', sans-serif;}
     background-size: cover;
     background-position: center;
     min-height: 500px;
+    
 }
 
 .slider__item-content{
@@ -148,7 +149,7 @@ header{font-family: 'Roboto', sans-serif;}
     color:#ffffff;
     line-height:36px;
     font-weight:500;
-    letter-spacing: .5px;
+    letter-spacing: 1.5px;
     margin-bottom:22px;
 }
 
@@ -158,5 +159,97 @@ header{font-family: 'Roboto', sans-serif;}
     color:#a1a0a2;
     font-size:18px;
     margin-bottom:50px;
+}
 
+/* .slider__btn{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height:24px;
+    letter-spacing: .25px;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 8px 30px 8px 24px;
+    border:1px solid #ffc222;
+    border-right-width: 20px;
+} */
+
+.default-btn{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height:24px;
+    letter-spacing: .25px;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 8px 30px 8px 24px;
+    border:1px solid #ffc222;
+    border-right-width: 20px;
+    position:relative;
+    outline: none;
+}
+
+.default-btn:after{
+    font-family: 'icomoon';
+    content: "\f105";
+    color: #ffffff;
+    position:absolute;
+    top:50%;
+    right:-13px;
+    transform:translateY(-50%);
+    -webkit-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    -o-transform:translateY(-50%);
+}
+
+.slider__inner{
+    position: relative;
+}
+
+.slick-btn{
+    position: absolute;
+    top:70%;
+    z-index: 3;
+    width:40px;
+    height:40px;
+    border:1px solid #ffffff;
+    background-color:transparent;
+    cursor:pointer;
+    outline:none;
+    background-color:#ffc222;
+    
+}
+
+.slick-btn:before{
+    position:absolute;
+    top:50%;
+    left:50%;
+    font-family: 'icomoon';
+    transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    -o-transform:translate(-50%,-50%);
+}
+
+.slick-btn.slick-disabled{
+    background-color:transparent;
+    cursor:default;
+}
+
+.slick-next{
+    right:0;
+}
+
+.slick-next:before{
+    content: "\f105";
+    color:#fff;
+}
+
+.slick-prev{
+    left:0;
+}
+
+.slick-prev:before{
+    content: "\f104";
+    color:#fff;
 }
