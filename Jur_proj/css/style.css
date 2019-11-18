@@ -123,3 +123,40 @@ header{font-family: 'Roboto', sans-serif;}
 .menu li + li{
     padding-left: 10px;
 }
+
+#modal{display:none;}
+
+.slider{
+    background-image: url(../img/slider-fon.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+}
+
+.slider__item-content{
+    text-align:center;
+    padding-top:110px;
+    max-width:665px;
+    margin:0 auto;
+}
+
+.slider__title{
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+    color:#ffffff;
+    line-height:36px;
+    font-weight:500;
+    letter-spacing: .5px;
+    margin-bottom:22px;
+}
+
+.slider__text{
+    font-family:'PT Serif', serif;
+    line-height:24px;
+    color:#a1a0a2;
+    font-size:18px;
+    margin-bottom:50px;
+
+}

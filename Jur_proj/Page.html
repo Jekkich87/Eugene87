@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Roboto:400,500&display=swap&subset=cyrillic" rel="stylesheet">
     <link href="./css/normalize.css" rel="stylesheet">
     <link href="./css/fonts.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Roboto:400,500&display=swap&subset=cyrillic" rel="stylesheet">
+    <link href="./css/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="../Jur_proj/css/slick.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -15,9 +17,9 @@
         <div class="header__top">
             <div class="container">
                 <div class="header__contacts">
-                <a class="header__phone" href="tel:38096111111">+38 (096) 111 11 11</a>
-                <a class="header__mail" href="#">mymail@mymail.com </a>
-                <a class="header__btn" href="#">Бесплатная консультация</a>
+                    <a class="header__phone" href="tel:38096111111">+38 (096) 111 11 11</a>
+                    <a class="header__mail" href="#">mymail@mymail.com </a>
+                    <a class="header__btn" data-fancybox data-src="#modal" href="javascript:;">Бесплатная консультация</a>
                 </div>
             </div>
         </div>
@@ -41,5 +43,51 @@
             </div>
         </div>
     </header>
+<section class="slider">
+    <div class="container">
+        <div class="slider__inner">
+            <div class="slider__item">
+                <div class="slider__item-content">
+                    <div class="slider__title">КОМПЛЕКСНОЕ ЗАКРЫТИЕ ПРЕДПРИЯТИЯ</div>
+
+                    <div class="slider__text">Полное прекращение существования юридического лица с сохранением легальности всейпредыдущей деятельности.</div>
+
+                    <a class="slider__button">Оставить заявку</a>
+                </div>
+            </div>
+            <div class="slider__item">
+                <div class="slider__item-content">
+                    <div class="slider__title">КОМПЛЕКСНОЕ ЗАКРЫТИЕ ПРЕДПРИЯТИЯ</div>
+
+                    <div class="slider__text">Полное прекращение существования юридического лица с сохранением легальности всейпредыдущей деятельности.</div>
+
+                    <a class="slider__button">Оставить заявку</a>
+                </div>
+            </div>
+            <div class="slider__item">
+                <div class="slider__item-content">
+                    <div class="slider__title">КОМПЛЕКСНОЕ ЗАКРЫТИЕ ПРЕДПРИЯТИЯ</div>
+
+                    <div class="slider__text">Полное прекращение существования юридического лица с сохранением легальности всейпредыдущей деятельности.</div>
+
+                    <a class="slider__button">Оставить заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="modal">
+    <form>
+      <input type="text" placeholder="Ваше имя">
+      <input type="text" placeholder="Ваш телефон">
+      <input type="submit" value="Отправить">
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./js/jquery.fancybox.min.js"></script>
+<script src="../Jur_proj/js/slick.min.js"></script>
+<script src="./js/main.js"></script>
 </body>
 </html>
