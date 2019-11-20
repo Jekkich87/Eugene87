@@ -254,23 +254,23 @@ header{font-family: 'Roboto', sans-serif;}
     color:#fff;
 }
 
-.about{
+.services{
     padding: 50px 0px 30px;
 }
 
-.about__top{
+.services__top{
     display:flex;
     justify-content: space-between;
     margin-bottom: 60px;
 }
 
-.about__title-box{
+.services__title-box{
     max-width:520px;
     padding-left: 140px;
     position: relative;
 }
 
-.about__title-box:before{
+.services__title-box:before{
     content:'';
     position: absolute;
     width:100px;
@@ -280,7 +280,7 @@ header{font-family: 'Roboto', sans-serif;}
     top:35px;
 }
 
-.about-title{
+.services-title{
     font-family: 'Roboto', sans-serif;
     font-size:24px;
     font-weight: 500;
@@ -288,11 +288,11 @@ header{font-family: 'Roboto', sans-serif;}
     color:#212020;
 }
 
-.about-text{
+.services-text{
     letter-spacing: 0.1px;
 }
 
-.about__btn a{
+.services__btn a{
     font-family: 'Roboto', sans-serif;
     color:#373636;
     font-size:14px;
@@ -302,24 +302,26 @@ header{font-family: 'Roboto', sans-serif;}
     padding: 5px 38px; 
 }
 
-.about__items{
+.services__items{
     display:flex;
     justify-content: space-between;
 }
 
-.about__item{
+.services__item{
     max-width: 360px;
     text-align: center;
-    padding: 30px 0px 40px;
+    padding: 30px 0px 80px;
     min-height: 375px;
-    background-color:#ccc;
+    background-color:#f9f9f9;
+    position:relative;
+    box-shadow: 0px 7px 24.3px 2.7px rgba(91, 89, 89, 0.14);
 }
 
-.about__item:nth-child(3) img{
+.services__item:nth-child(3) img{
     margin-top:10px;
 }
 
-.about__item-title{
+.services__item-title{
     font-family: 'Roboto', sans-serif;
     font-size:18px;
     line-height: 24px;
@@ -328,18 +330,34 @@ header{font-family: 'Roboto', sans-serif;}
     padding: 24px 0;
 }
 
-.about__item-text{
+.services__item-text{
     font-family:'PT Serif', serif;
     font-size:14px;
     line-height: 18px;
     color:#5e5e5e;
     letter-spacing:.1px;
     padding:0px 30px 30px;
-    margin-bottom:60px;
 }
 
-.about__item-btn{
+.services__item-btn{
     position: absolute;
+    left:0;
+    right:0;
     
 }
+
+.services__item-btn .default-btn{
+    color: #373636;
+}
+
+.services__item-link{
+    font-family: 'Roboto', sans-serif;
+    font-size:14px;
+    color:#050505;
+    line-height:18px;
+    border-bottom:1px solid #050505;
+    margin-right: 60px;
+}
+
+
 
