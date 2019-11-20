@@ -359,5 +359,37 @@ header{font-family: 'Roboto', sans-serif;}
     margin-right: 60px;
 }
 
+.about{
+    background-image: url(../img/about-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height:300px;
+    padding: 25px 0px 45px;
+}
+
+.about__inner{
+    max-width:545px;
+}
+
+.about__title{
+    font-family: 'Roboto', sans-serif;
+    font-size:24px;
+    font-weight: 500;
+    color:#fff;
+    line-height: 24px;
+    margin-bottom:20px;
+
+}
+
+.about__text{
+    font-family:'PT Serif', serif;
+    font-size:14px;
+    line-height: 24px;
+    color:#d3d2d2;
+    letter-spacing:.1px;
+    margin-bottom:40px;
+    padding:0;
+}
 
 
