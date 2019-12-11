@@ -6,6 +6,11 @@ var hod = 0;
 
 document.getElementById('game').onclick = function (event) { 
     console.log(event);
-    
+    if (event.target.className == 'block') {
+        if (hod % 2 == 0) { event.target.innerHTML = 'X';}
+        else { event.target.innerHTML = '0'; };
+        hod++;
+    }
+
     
 } //событие клик для записи значка в клетку
