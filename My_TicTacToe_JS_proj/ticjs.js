@@ -29,12 +29,13 @@ function OHoriz() {
 function OVert() {
     if (allblock[0].innerHTML == "0" && allblock[4].innerHTML == "0" && allblock[8].innerHTML == "0") { alert('Zeros are winned!') };
     if (allblock[2].innerHTML == "0" && allblock[4].innerHTML == "0" && allblock[6].innerHTML == "0") { alert('Zeros are winned!') };
+    if (allblock[2].innerHTML == "0" && allblock[5].innerHTML == "0" && allblock[8].innerHTML == "0") { alert('Zeros are winned!') };
 }
 
 function ODiag() {
     if (allblock[0].innerHTML == "0" && allblock[3].innerHTML == "0" && allblock[6].innerHTML == "0") { alert('Zeros are winned!') };
     if (allblock[1].innerHTML == "0" && allblock[4].innerHTML == "0" && allblock[7].innerHTML == "0") { alert('Zeros are winned!') };
-    if (allblock[2].innerHTML == "0" && allblock[5].innerHTML == "0" && allblock[8].innerHTML == "0") { alert('Zeros are winned!') };
+    
 }
 
 function checkWinnerX(){
