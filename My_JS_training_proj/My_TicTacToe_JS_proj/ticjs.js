@@ -1,13 +1,11 @@
 
-
-
-
 for (var i = 0; i < 9; i++){
     document.getElementById('game').innerHTML+=`<div class="block"></div>`
 }  //создаем 9 блоков для поля игры, creating 9 block for gaming field
 
 var move = 0;
 var cll = document.getElementsByClassName('block');
+
 var mass = [
     [cll[0], cll[1], cll[2]],
     [cll[3], cll[4], cll[5]],
@@ -28,11 +26,29 @@ function checkWinner(){
         else if (mass[i][0].innerHTML==mass[i][1].innerHTML&&mass[i][1].innerHTML==mass[i][2].innerHTML&&mass[i][0].innerHTML=='x'){
             alert("Crosses are winners!");
         }
-
-        
-        
     }
 }
+
+function Marking() {
+    if (event.target.className == 'block') {
+        if (move % 2 == 0) { event.target.innerHTML = 'x';}
+        else { event.target.innerHTML = '0'; };
+        move++;
+    }
+}
+
+
+document.getElementById('game').onclick = function (event) { 
+    Marking();
+    checkWinner(); 
+}
+
+document.getElementById('button').onclick = function (event) { 
+    location.reload();
+}
+
+
+
 // else if(mass[i][0].innerHTML==mass[i][1].innerHTML&&mass[i][1].innerHTML==mass[i][2].innerHTML&&mass[i][0].innerHTML!=' '){
         //     alert('Draw!');}
 
@@ -90,16 +106,4 @@ function checkWinner(){
 //     checkWinnerO();
 // }
 
-function Marking() {
-    if (event.target.className == 'block') {
-        if (move % 2 == 0) { event.target.innerHTML = 'x';}
-        else { event.target.innerHTML = '0'; };
-        move++;
-    }
-}
 
-
-document.getElementById('game').onclick = function (event) { 
-    Marking();
-    checkWinner(); 
-}
