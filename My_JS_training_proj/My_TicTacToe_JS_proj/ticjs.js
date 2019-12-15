@@ -6,33 +6,33 @@ for (var i = 0; i < 9; i++){
     document.getElementById('game').innerHTML+=`<div class="block"></div>`
 }  //создаем 9 блоков для поля игры, creating 9 block for gaming field
 
-// var move = 0;
-// var cll = document.getElementsByClassName('block');
-// var mass = [
-//     [cll[0], cll[1], cll[2]],
-//     [cll[3], cll[4], cll[5]],
-//     [cll[6], cll[7], cll[8]],
-//     [cll[0], cll[3], cll[6]],
-//     [cll[1], cll[4], cll[7]],
-//     [cll[2], cll[5], cll[8]],
-//     [cll[0], cll[4], cll[8]],
-//     [cll[2], cll[4], cll[6]],
-// ]
+var move = 0;
+var cll = document.getElementsByClassName('block');
+var mass = [
+    [cll[0], cll[1], cll[2]],
+    [cll[3], cll[4], cll[5]],
+    [cll[6], cll[7], cll[8]],
+    [cll[0], cll[3], cll[6]],
+    [cll[1], cll[4], cll[7]],
+    [cll[2], cll[5], cll[8]],
+    [cll[0], cll[4], cll[8]],
+    [cll[2], cll[4], cll[6]],
+]
 
-// function checkWinner(){
-//     for (i = 0; i < mass.length; i++){
-//         if (mass[i][0].innerHTML == mass[i][1].innerHTML && mass[i][1].innerHTML == mass[i][2].innerHTML && mass[i][0].innerHTML == '0') {
-//             alert("Zeros are winners!");
-//         }
+function checkWinner(){
+    for (i = 0; i < mass.length; i++){
+        if (mass[i][0].innerHTML == mass[i][1].innerHTML && mass[i][1].innerHTML == mass[i][2].innerHTML && mass[i][0].innerHTML == '0') {
+            alert("Zeros are winners!");
+        }
 
-//         else if (mass[i][0].innerHTML==mass[i][1].innerHTML&&mass[i][1].innerHTML==mass[i][2].innerHTML&&mass[i][0].innerHTML=='x'){
-//             alert("Crosses are winners!");
-//         }
+        else if (mass[i][0].innerHTML==mass[i][1].innerHTML&&mass[i][1].innerHTML==mass[i][2].innerHTML&&mass[i][0].innerHTML=='x'){
+            alert("Crosses are winners!");
+        }
 
         
         
-//     }
-// }
+    }
+}
 // else if(mass[i][0].innerHTML==mass[i][1].innerHTML&&mass[i][1].innerHTML==mass[i][2].innerHTML&&mass[i][0].innerHTML!=' '){
         //     alert('Draw!');}
 
