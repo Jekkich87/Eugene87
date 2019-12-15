@@ -1,4 +1,4 @@
-body{
+/* body{
    
 }
 
@@ -30,6 +30,14 @@ body{
     font-size: 40px;
     color: #eafa07;
     text-transform: uppercase;
-    /* box-sizing: border-box; */
-    /* float: left;*/
+} 
+*/
+
+#wrap{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
+
