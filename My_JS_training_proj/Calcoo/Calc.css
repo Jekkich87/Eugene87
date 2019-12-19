@@ -13,7 +13,7 @@
 .calculator-grid{
     display: grid;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
@@ -29,5 +29,31 @@
 
 .calculator-grid > button:hover{
     background-color:#ffffffe6
+}
+
+.span-two{
+    grid-column: span 2;
+}
+
+.output{
+    grid-column: 1/-1;
+    background-color: #000000bf;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    padding:10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.output .previous-operand{
+    color: #ffffffbf;
+    font-size: 1.5rem;
+}
+
+.output .current-operand{
+    color: #ffffff;
+    font-size: 2.5rem;
 }
 
