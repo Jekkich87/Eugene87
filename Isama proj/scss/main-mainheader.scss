@@ -1,0 +1,124 @@
+.mainheader 
+{
+  height:218px;
+  background-color: #ffffff;
+  display:flex;
+  justify-content:center;
+     
+    & .wrap
+    {
+      width: 1160px;
+      height:218px;
+      display: grid;
+      grid-template-columns: 410px 220px;
+      grid-column-gap: 450px;
+      justify-content: center;
+      align-items: center;
+
+        /*&__logo{
+          margin-left:-130px;
+        }*/
+
+        &__img
+        {
+          width:405px;
+          height: 95px;
+          margin:0;
+          padding:0;
+          margin-left:-60px;
+        }
+
+        &__contacts
+        {
+          display:grid;
+          grid-template-columns: repeat(3, 1fr);
+
+          &-div
+            {
+              width:70px;
+              height:40px;
+              align-items:center;
+              display:flex;
+              justify-content: center;
+                &:nth-child(1){
+                  background-image: url(../icons/phone.png);
+                  background-repeat: no-repeat;
+                  background-position: center;
+                }
+                &:nth-child(2)
+                {
+                  border-left: 1px solid #bcbec3;
+                  border-right: 1px solid #bcbec3;
+                  background-image: url(../icons/map0.png);
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  position: relative;
+                  &:hover
+                  {
+                    background-image: url(../icons/map.png);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                        
+                        
+                    & p
+                    {
+                      display: flex;
+                      width:210px;
+                      height:60px;
+                      justify-content: center;
+                      align-items: center;
+                      font-size: 16px;
+                      color: #d4d4d5;
+                      font-weight: bold;
+                      bottom: 35px;
+                      border:1px solid #d4d4d5 ;
+                      position:absolute;
+                      &::before 
+                      { 
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        bottom:-10px ;
+                        width: 0;
+                        height: 0;
+                        border-left:10px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-top: 10px solid grey;
+                      }
+                            
+                            
+                      &::after 
+                      { 
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        bottom:-10px ;
+                        width: 0;
+                        height: 0;
+                        border-left:10px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-top: 10px solid white;
+                      }
+                    }
+                }
+              }
+
+              &:nth-child(3){
+                background-image: url(../icons/mail.png);
+                background-repeat: no-repeat;
+                background-position: center;
+              }
+                
+              & p{
+                position: absolute;
+                display:none;
+              }
+
+            }
+                   
+         }
+
+      }
+    
+}
+ 

@@ -1,0 +1,129 @@
+.header .mainnav {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-top: 1px solid #eceef4;
+  margin: 0;
+  padding: 0;
+}
+
+.header .navwrap {
+  width: 1160px;
+  height: 85px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 762px 250px;
+      grid-template-columns: 762px 250px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-column-gap: 100px;
+}
+
+.header .navwrap__search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 85px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header .navwrap__search-input {
+  border: none;
+  margin-left: 10px;
+  font-size: 15px;
+  color: #6d6e71;
+}
+
+.header .navmenu {
+  width: 762px;
+  height: 85px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  grid-column-gap: 1px;
+  /*text-align: center;
+                    justify-items: center;*/
+  padding-left: 0;
+  margin: 0;
+}
+
+.header .navmenu__divlink {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 85px;
+  border-left: 1px solid #eceef4;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.header .navmenu__divlink:nth-child(1) {
+  width: 75px;
+}
+
+.header .navmenu__divlink:nth-child(2) {
+  width: 165px;
+}
+
+.header .navmenu__divlink:nth-child(3) {
+  width: 136px;
+}
+
+.header .navmenu__divlink:nth-child(4) {
+  width: 136px;
+}
+
+.header .navmenu__divlink:nth-child(5) {
+  width: 152px;
+}
+
+.header .navmenu__divlink:nth-child(6) {
+  width: 98px;
+}
+
+.header .navmenu__divlink:hover::before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: .5px;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 10px solid grey;
+}
+
+.header .navmenu__divlink:hover::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0.5px;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 10px solid #1faae2;
+}
+
+.header .navmenu__divlink-a {
+  text-decoration: none;
+  font-size: 13pt;
+  line-height: 27pt;
+}
+/*# sourceMappingURL=header-nav.css.map */

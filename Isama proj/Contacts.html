@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contacts</title>
+    <link href="./styles/Contacts.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="main">
+  <header class="header">
+    <div class="topheader">
+      <div class="wrap">
+        <div class="nav">
+          <div class="nav__block"><img class="nav__block-log" src="./icons/blog.png" alt><a class="nav__block-a" href="#">Blog</a></div>
+          <div class="nav__block"><img class="nav__block-log" src="./icons/jobs.png" alt><a class="nav__block-a" href="#">Jobs</a></div>
+          <div class="nav__block"><img class="nav__block-log" src="./icons/support.png" alt><a class="nav__block-a" href="#">Support</a></div>
+          <div class="nav__block"><img class="nav__block-log" src="./icons/lang.png" alt><a class="nav__block-a" href="#">Arabic</a></div>
+        </div>
+
+        <div class="social">
+          <div class="social__div"><a href="https://www.facebook.com/" target="_blank"><img class="header__ico" src="icons/facebook.png"></a></div>
+          <div class="social__div"><a href="https://plus.google.com/" target="_blank"><img class="header__ico" src="icons/g+.png" alt></a></div>
+          <div class="social__div"><a href="https://www.instagram.com" target="_blank"><img class="header__ico" src="icons/instagram.png" alt></a></div>
+          <div class="social__div"><a href="https://twitter.com" target="_blank"><img class="header__ico" src="icons/twitter.png" alt></a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mainheader">
+      <div class="wrap">
+        <div class="wrap__logo"><a href="Main.html" target="_blank"><img class="wrap__img" src="./img/logo_isama.png" alt></a></div>
+        <div class="wrap__contacts">
+          <div class="wrap__contacts-div"></div>
+          <div class="wrap__contacts-div"><p class="p">Saudi Arabia . Alreyadah</p></div>
+          <div class="wrap__contacts-div"></div>
+        </div>
+      </div>
+    </div>
+
+    
+    <nav class="mainnav">
+      <div class="navwrap">
+        <div class="navmenu">
+           <div class="navmenu__divlink"><a class="navmenu__divlink-a" href="Main.html" target="_self">HOME</a></div>
+           <div class="navmenu__divlink"><a class="navmenu__divlink-a" href="#aboutus" target="_self">What about ISAMA</a></div>
+           <div class="navmenu__divlink"><a class="navmenu__divlink-a" href="#services" target="_self">What we do</a></div>
+           <div class="navmenu__divlink"><a class="navmenu__divlink-a" href="#projects" target="_self">Our Projects</a></div>
+           <div class="navmenu__divlink"><a class="navmenu__divlink-a" href="#team" target="_self">Exelent Team</a></div>
+           <div class="navmenu__divlink"><a class="navmenu__divlink-a" href="#contacts" target="_self">Contact</a></div>
+        </div>
+
+        <div class="navwrap__search">
+          <img src="./icons/search.png" alt="loopa">
+          <input class="navwrap__search-input" id name type="text" placeholder="Type your search words">
+        </div>
+      </div>
+    </nav>
+  </header>
+
+<section class="contactspage">
+
+    <div class="wrap">
+
+
+
+        <article class="contactform">
+
+          <h1 class="contactform__h1">Contact us!</h1>
+          
+            <form class="card" action="post">
+
+                <input class="card__name" id name="your-name" type="text" aria-requride="true" placeholder="Your Name">
+
+                <input class="card__mail" id name="your-mail" type="text" aria-requride="true" placeholder="Your email">
+
+                <input class="card__title" id name="your-title" type="text" aria-requride="false" placeholder="Your title">
+                
+                <textarea class="card__comment" id name="your-comment" placeholder="Your comment"></textarea>
+
+                <button class="card__button" type="submit">Send</button>
+
+            </form>
+
+
+        </article>
+
+
+        <article class="offices">
+
+          <h1 class="contactform__h1">Our Offices</h1>
+
+          <div class="offices__wrap">
+
+          <div class="officediv">
+
+            <p class="officediv__head">Head Office – Kingdom of Saudi Arabia, Riyadh:</p>
+            <ul class="officediv__list">
+              <li>Address: Riyadh City, Olaya St.,Al-Rossais Commercial Center Floor 4 Office#411.</li>
+              <li>Phone: (+966) 920007262</li>
+              <li>Location: <a href="https://goo.gl/maps/CdeBmzxDG2P2" target="_blank" rel="noopener noreferrer">View Map</a></li>
+            </ul>
+
+          </div>
+
+
+          <div class="officediv">
+
+            <p class="officediv__head">Egypt, Alexandria: </p>
+            <ul class="officediv__list">
+              <li>Address: Smouha Barons, Albert Al Awal St. building 6 App# 101, Alexandria, Egypt.</li>
+              <li>Phone: 002 03 4201214</li>
+              <li>Location: <a href="https://goo.gl/maps/GZcwTvkexaG2" target="_blank" rel="noopener noreferrer">View Map</a></li>
+            </ul>
+
+          </div>
+
+          <div class="officediv">
+
+            <p class="officediv__head">Kuwait, Kuwait:</p>
+            <ul class="officediv__list">
+              <li>Adress: Kuwait, Kuwait City, Qubila Alshuhada St., Alsedah Tower, Floor 25</li>
+              <li>Phone: 00965-90099457</li>
+              <li>Location: <a href="https:////goo.gl/maps/SMVsZLsjvhQ2" target="_blank" rel="noopener noreferrer">View Map</a></li>
+            </ul>
+
+          </div>
+
+          </div>
+        </article>
+
+    </div>
+<div class="contactspage__map" id="map">
+
+</div>
+</section>
+
+</main>
+
+<footer class="footer">
+
+    <div class="footer__wrap">
+
+      <div class="footer__social">
+        <div class="footer__div"><a href="https://plus.google.com/" target="_blank"><img class="footer__ico" src="icons/foot-g.png"></a></div>
+          <div class="footer__div"><a href="https://www.instagram.com" target="_blank"><img class="footer__ico" src="icons/foot-insta.png" alt></a></div>
+          <div class="footer__div"><a href="https://twitter.com" target="_blank"><img class="footer__ico" src="icons/foot-twi.png" alt></a></div>
+          <div class="footer__div"><a href="https://www.facebook.com/" target="_blank"><img class="footer__ico" src="icons/foot-fb.png" alt></a></div>
+      </div>
+
+      
+      <form class="footer__form" action>
+        <img class="footer__img" src="./icons/finputico.png" alt>
+        <input class="footer__input" id name type="text" placeholder="Enter your email for out newsletter" button="submit">
+        <button class="footer__button" type="submit">Join</button>
+      </form>
+      
+    </div>
+
+  </footer>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBp5ByjrDVg7Aq3gocA53vfh75OmPaBvCA&callback=initMap" async defer></script>
+<script src="./JS/Map.js" async defer></script>
+
+</body>
+</html>
