@@ -1,6 +1,12 @@
 const listsContainer = document.querySelector("#data-lists");
 const newListForm = document.querySelector('#data-new-list-form');
 const newListInput = document.querySelector('#data-new-list-input');
+const deleteListBtn = document.querySelector('#delete-list-btn');
+const listDisplayContainer = document.querySelector('#datalist-display-container');
+const listTitleElement = document.querySelector('#datalist-title');
+const listCountElement = document.querySelector('#datalist-count');
+const tasksContainer = document.querySelector('data-tasks');
+
 
 const LOCAl_STORAGE_LIST_KEY = 'task.list'  //prevent overwriting local storage
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
@@ -9,8 +15,21 @@ let lists = JSON.parse(localStorage.getItem(LOCAl_STORAGE_LIST_KEY))||[]; //gett
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY); //choosing list as 'active list'
 
 
-function render() { //rendering list of 'todo'-lists
+function render() { 
     clearElement(listsContainer);
+    renderLists();
+
+    const selectedList = lists.find(list => list.id === selectedListId);
+    if (selectedListId == null) {
+        listDisplayContainer.style.display = 'none';  //don`t display tasks box, if no one list is selected
+    }
+    else {
+        listDisplayContainer.style.display = '';
+        listTitleElement.innerText = selectedList.name; //changing title of choosed list according to its title in 'todo lists' list;
+     }
+}
+
+function renderLists() { //rendering list of 'todo'-lists
     lists.forEach(list => {
         const listElement = document.createElement('li');
         listElement.dataset.listId = list.id; //marking wich list id active
@@ -60,7 +79,13 @@ function saveAndRender() { //rendering saved info from Local Storage
 
 listsContainer.addEventListener('click', e => { //marking clicked list as active (selected) list
     if (e.target.tagName.toLowerCase() === 'li') {
-        selectedListId = e.target.dataset.listId;
+        selectedListId = e.target.dataset.listId; //wich id is selecting
         saveAndRender();
     }
+});
+
+deleteListBtn.addEventListener('click', e => { //function to delete list
+    lists = lists.filter(lists => lists.id != selectedListId);
+    selectedListId = null;
+    saveAndRender();
 })
