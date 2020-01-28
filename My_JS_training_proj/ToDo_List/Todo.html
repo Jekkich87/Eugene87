@@ -15,11 +15,7 @@
 
     <h2 class="task-list-title">My lists</h2>
 
-    <ul class="task-list" id="data-lists">
-        <!-- <li class="list-name active-list">Work</li>
-        <li class="list-name">Home tasks</li>
-        <li class="list-name">Books to read</li> -->
-    </ul>
+    <ul class="task-list" id="data-lists"></ul>
 
     <form id="data-new-list-form" action>
         <input class="new list" id="data-new-list-input" name type="text" aria-label="new list name" placeholder="new list name">
@@ -37,41 +33,18 @@
     <div class="todo-body">
         <div class="tasks" id="data-tasks">
 
-            <div class="task">
-               <input id="task-1" name type="checkbox"> 
-               <label for="task-1">
-                   <span class="custom-checkbox"></span>
-                   Task 1
-                </label>
-            </div>
-
-            <div class="task">
-               <input id="task-2" name type="checkbox"> 
-               <label for="task-2">
-                   <span class="custom-checkbox"></span>
-                   Task 2
-                </label>
-            </div>
-
-            <div class="task">
-               <input id="task-3" name type="checkbox"> 
-               <label for="task-3">
-                   <span class="custom-checkbox"></span>
-                   Task 3
-                </label>
-            </div>
-            
         </div>
+
         <div class="new-tasks-creator">
-            <form action="">
-                <input class="new task" id name type="text" aria-label="new task name" placeholder="new task name">
+            <form id="data-new-task-form" action>
+                <input class="new task" id="data-new-task-input" name type="text" aria-label="new task name" placeholder="new task name">
                 <button class="btn create" aria-label="create new task">+</button>
             </form>
         </div>
 
         <div class="delete-stuff">
 
-            <button class="btn delete">Clear complited tasks</button>
+            <button class="btn delete" id="delete-task-btn">Clear complited tasks</button>
             
             <button class="btn delete" id="delete-list-btn">Delete list</button>
 
@@ -80,6 +53,14 @@
 
 </div>
 
+<template id="task-template">
+    <div class="task">
+        <input type="checkbox"> 
+            <label>
+                <span class="custom-checkbox"></span>
+            </label>
+    </div>
+</template>
 
 <script src="Todo.js"></script>
 </body>

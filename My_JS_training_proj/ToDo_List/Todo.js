@@ -5,7 +5,11 @@ const deleteListBtn = document.querySelector('#delete-list-btn');
 const listDisplayContainer = document.querySelector('#datalist-display-container');
 const listTitleElement = document.querySelector('#datalist-title');
 const listCountElement = document.querySelector('#datalist-count');
-const tasksContainer = document.querySelector('data-tasks');
+const tasksContainer = document.querySelector('#data-tasks');
+const taskTemplate = document.getElementById('task-template'); //
+const newTaskForm = document.querySelector('#data-new-task-form');
+const newTaskInput = document.querySelector('#data-new-task-input');
+const deleteTaskBtn = document.querySelector('#delete-task-btn');
 
 
 const LOCAl_STORAGE_LIST_KEY = 'task.list'  //prevent overwriting local storage
@@ -26,7 +30,10 @@ function render() {
     else {
         listDisplayContainer.style.display = '';
         listTitleElement.innerText = selectedList.name; //changing title of choosed list according to its title in 'todo lists' list;
-     }
+        renderTaskCount(selectedList); //showing task counter
+        clearElement(tasksContainer);
+        renderTasks(selectedList);
+    }
 }
 
 function renderLists() { //rendering list of 'todo'-lists
@@ -47,8 +54,6 @@ function clearElement(element) {
         element.removeChild(element.firstChild);
     }
 }
-
-render();
 
 newListForm.addEventListener('submit', e => { //posibility to create new 'todo'-lists
     e.preventDefault();
@@ -85,7 +90,61 @@ listsContainer.addEventListener('click', e => { //marking clicked list as active
 });
 
 deleteListBtn.addEventListener('click', e => { //function to delete list
-    lists = lists.filter(lists => lists.id != selectedListId);
+    lists = lists.filter(list => list.id != selectedListId);
     selectedListId = null;
     saveAndRender();
 })
+
+function renderTaskCount(selectedList) { //marking how many tasks stay to do;
+    const incompleteTaskCount = selectedList.tasks.filter(task => !task.complete).length;
+    const taskString = incompleteTaskCount === 1 ? "task" : 'tasks';
+    listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
+}
+
+function renderTasks(selectedList) {  //rendering tasks
+    selectedList.tasks.forEach(task => {
+        const taskElement = document.importNode(taskTemplate.content, true);
+        const checkbox = taskElement.querySelector('input');
+        checkbox.id = task.id;
+        checkbox.checked = task.complete;
+        const label = taskElement.querySelector('label');
+        label.htmlFor = task.id;
+        label.append(task.name);
+        tasksContainer.appendChild(taskElement);
+    });
+}
+
+newTaskForm.addEventListener('submit', e => { //posibility to create new task
+    e.preventDefault();
+    const taskName = newTaskInput.value;
+    if (taskName == null || taskName === '') return;
+    const task = createTask(taskName);
+    newTaskInput.value = null;
+    const selectedList = lists.find(list => list.id === selectedListId);
+    selectedList.tasks.push(task);
+    saveAndRender();
+});
+
+function createTask(name) { //adding name for task
+    return {
+        id: Date.now().toString(), name: name, complete: false
+    }
+}
+
+tasksContainer.addEventListener('click', e => {
+    if (e.target.tagName.toLowerCase() === 'input') { //checking if task is marked
+        const selectedList = lists.find(list => list.id === selectedListId);
+        const selectedTask = selectedList.tasks.find(task => task.id === e.target.id);
+        selectedTask.complete = e.target.checked;
+        save();
+        renderTaskCount(selectedList); //showing changes in quantity of unfinished tasks
+    }
+})
+
+deleteTaskBtn.addEventListener('click', e => {  //possibility to delete task from list
+    const selectedList = lists.find(list => list.id === selectedListId);
+    selectedList.tasks = selectedList.tasks.filter(task => !task.complete);
+    saveAndRender();
+})
+
+render();
