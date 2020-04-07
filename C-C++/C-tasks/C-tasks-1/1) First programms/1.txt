@@ -1,2 +1,4 @@
+Write a program that displays the following lines:
+
 Hello, World!
 The world is yours!

@@ -1,7 +1,7 @@
-Напишите программу, которая выводит на экран следующие строки:
+Rewrite the program "Hello, world!"  so that the following text appears on the screen:
 
 NICKNAME: Neo
-CITY: St-Petersburg
+CITY: New-Yourk
 AGE: 35
 HEIGHT: 180
 WEIGHT: 75
