@@ -1,0 +1,9 @@
+Help Sherlock Holmes write a business card program.
+
+The program should display information about the coordinates of his home on Baker Street.
+
+Note: there is one space between grad and 31, and two between grad and 9.
+
+S.Holmes: 
+51grad 31'25.48" N
+0 grad  9'29.93" W

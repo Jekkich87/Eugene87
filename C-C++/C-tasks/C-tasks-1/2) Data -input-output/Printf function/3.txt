@@ -1,0 +1,4 @@
+Correct the proposed task so that it displays the following text:
+
+"I'll be back!" 
+	(c)Terminator 

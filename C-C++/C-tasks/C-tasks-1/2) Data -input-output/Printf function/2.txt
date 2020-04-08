@@ -1,0 +1,20 @@
+Complete the format specifiers with the appropriate modifiers so that the output on the screen looks like this:
+
+||-----|-----|-----|-----||
+|| act | one | two | res ||
+||=====+=====+=====+=====||
+||    +|3    |4    |00007||
+||    -|    3|    4|-0001||
+||    *|    3|4    |00012||
+||/    |3    |    4|0.750||
+===========================
+
+
+Подсказка:
+Код
+
+printf("|%6.4d|",4);
+
+даст на выходе:
+
+|  0004|

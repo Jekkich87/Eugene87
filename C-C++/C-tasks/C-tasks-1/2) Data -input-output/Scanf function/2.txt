@@ -1,0 +1,16 @@
+Write a program that at the current time displays the number of seconds that have passed since the beginning of the day.
+
+Three numbers are input to the program (current time):
+the first is the number of hours, the second is the number of minutes, and the third is the number of seconds.
+
+
+Sample Input:
+
+6 37 27
+
+Sample Output:
+
+23847
+
+
+
