@@ -1,0 +1,31 @@
+Write a program that calculates the area of a triangle on two sides and the angle between them.
+
+Input Format:
+Three numbers a, b, γ enter the program input.
+a, b are real numbers, the lengths of the sides of the triangle.
+γ is the angle between sides a and b, written in degrees, a real number.
+
+Output Format:
+One number is the area of the triangle with sides a, b and angle γ. Accuracy - two decimal digits.
+
+
+Написать программу, вычисляющую площадь треугольника по двум сторонам и углу между ними.
+
+Формат входных данных:
+На вход программы поступают три числа a,b,γ.
+a,b — вещественные числа, длины сторон треугольника.
+γ — угол между сторонами a и b, записанный в градусах, вещественное число.
+
+Формат выходных данных:
+Одно число -- площадь треугольника со сторонами a,b и углом γ. Точность — два знака после запятой. 
+
+
+
+Sample Input:
+
+17.77 18.31 168.87
+
+Sample Output:
+
+31.40
+

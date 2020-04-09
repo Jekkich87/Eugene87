@@ -1,0 +1,25 @@
+Write a program that calculates the distance between two points on the coordinate axis.
+
+Input Format:
+Two numbers x1, x2, the coordinates of two points on the coordinate axis, enter the program input. x1, x2 are integers.
+
+Output Format:
+One integer is the distance between points x1 and x2.
+
+Написать программу, вычисляющую расстояние между двумя точками на оси координат.
+
+Формат входных данных:
+На вход программы поступают два числа x1,x2 — координаты двух точек на оси координат. x1,x2 — целые числа.
+
+Формат выходных данных:
+Одно целое число — расстояние между точками x1 и x2.
+
+
+Sample Input: 
+
+-39 62
+
+Sample Output: 
+
+101
+
