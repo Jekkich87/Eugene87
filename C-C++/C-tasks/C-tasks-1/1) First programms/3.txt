@@ -1,5 +1,7 @@
 Rewrite the program "Hello, world!"  so that the following text appears on the screen:
 
+Напишите программу, которая выводит на экран следующие строки:
+
 NICKNAME: Neo
 CITY: New-Yourk
 AGE: 35

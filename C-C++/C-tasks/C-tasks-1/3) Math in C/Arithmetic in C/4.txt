@@ -1,0 +1,30 @@
+Write a program that converts an angle from degree to radian.
+
+Input Format:
+
+one integer A is the angle measured in degrees.
+
+Output Format:
+
+the real number R is the angle measured in radians. Accuracy - two decimal places.
+
+
+Напишите программу переводящую угол из градусной меры в радианную.
+
+Формат входных данных:
+
+одно целое число A — угол, измеренный в градусах.
+
+Формат выходных данных:
+
+вещественное число R — угол, измеренный в радианах. Точность — два знака после запятой.
+
+
+Sample Input:
+
+90
+
+Sample Output:
+
+1.57
+

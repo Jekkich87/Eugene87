@@ -3,6 +3,10 @@ Write a program that at the current time displays the number of seconds that hav
 Three numbers are input to the program (current time):
 the first is the number of hours, the second is the number of minutes, and the third is the number of seconds.
 
+Напишите программу, которая по текущему времени выводит количество секунд, прошедших с начала суток. 
+
+На вход программе подаются три числа (текущее время): первое — количество часов, второе — количество минут и третье — количество секунд.
+
 
 Sample Input:
 

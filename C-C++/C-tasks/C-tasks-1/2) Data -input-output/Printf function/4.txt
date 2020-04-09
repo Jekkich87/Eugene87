@@ -1,5 +1,10 @@
 Using the tab characters, change the printf function so that you get a spreadsheet. 
 
+Используя символы табуляции, измените вызов функции printf так, чтобы получалась красивая табличка. 
+
+Учтите, что позиции табуляции у вас и в проверяющей системе могут иметь различные значения.
+
+
  Sample Output:
 
 N	10*N	100*N	1000*N

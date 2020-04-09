@@ -1,4 +1,6 @@
 Write a program that displays the following lines:
 
+Напишите программу, которая выводит на экран следующие строки:
+
 Hello, World!
 The world is yours!

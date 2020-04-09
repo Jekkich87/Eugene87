@@ -1,0 +1,14 @@
+The input of the program receives a three-digit integer. Write a program that displays the sum of the digits of this number.
+
+На вход программы поступает целое трёхзначное число. Напишите программу, которая выводит сумму цифр этого числа.
+
+Sample Input:
+
+123
+
+Sample Output:
+
+6
+
+
+
