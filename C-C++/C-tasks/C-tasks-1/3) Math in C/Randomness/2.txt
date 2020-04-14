@@ -1,0 +1,22 @@
+A field for playing roulette consists of cells from 0 to N. The program receives one number N from the interval [1, 666].
+
+The program should give a random number from zero to N.
+
+
+
+Поле для игры в рулетку состоит из ячеек от 0 до N.  На вход программе подаётся одно число N из промежутка [1, 666].
+
+Программа должна выдать случайное число от нуля до N. 
+
+
+
+Sample Input:
+
+36
+
+Sample Output:
+
+36
+
+
+
