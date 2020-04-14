@@ -1,0 +1,36 @@
+Determine the number obtained by writing in the reverse order of the digits of a given three-digit integer.
+
+Input data:
+The natural three-digit number K.
+
+Output:
+The number K, written in reverse order.
+
+
+Определить число, полученное выписыванием в обратном порядке цифр заданного целого трехзначного числа.
+
+Входные данные:
+Натуральное трёхзначное число K.
+
+Выходные данные:
+Число K, записанное в обратном порядке.
+
+
+
+Sample Input 1:
+
+248
+
+Sample Output 1:
+
+842
+
+Sample Input 2:
+
+230
+
+Sample Output 2:
+
+32
+
+ 

@@ -1,0 +1,26 @@
+Napier Euler number
+
+Input data:
+are absent
+
+Output:
+Three real numbers - the value of the sum with 4, 5 and 6 terms. Each number from a new line. Output format 5 decimal places.
+
+Tips:
+Compare with the approximate value given on Wikipedia: 2.71828
+
+Before checking, make sure that your program stops precisely on the 4,5,6 term.
+
+
+Число Непера-Эйлера
+
+Входные данные:
+отсутствуют
+
+Выходные данные:
+Три вещественных числа - значение суммы с 4, 5 и 6 слагаемыми. Каждое число с новой строки. Формат вывода 5 знаков после запятой.
+
+Подсказки:
+Сравните с приблизительным значением приведённым в википедии: 2,71828
+
+Перед проверкой убедитесь, что Ваша программа останавливается именно на 4,5,6 слагаемом.

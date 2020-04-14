@@ -1,0 +1,30 @@
+Create a program for calculating the volume of the cylinder and cone, which have the same height h and the same base radius r.
+
+Input data:
+Two natural numbers. The first r is the radius of the base in cm, the second h h h is the height in centimeters.
+
+Output:
+Two real numbers that have two decimal places. The first number is the volume of the cylinder with height h and base radius r.
+The second number is the volume of the cone with height h and base radius r.
+
+
+Составить программу вычисления объема цилиндра и конуса, которые имеют одинаковую высоту h и одинаковый радиус основания r.
+
+Входные данные:
+Два натуральных числа. Первое r - радиус основания в см, второе h h h - высота в сантиметрах.
+
+Выходные данные:
+Два вещественных числа, имеющих два знака после запятой. Первое число - объём цилиндра с высотой h и радиусом основания r. 
+Второе число - объём конуса с высотой h и радиусом основания r.
+
+
+
+
+Sample Input:
+
+11 29
+
+Sample Output:
+
+11023.85 3674.62
+

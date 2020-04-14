@@ -1,0 +1,31 @@
+
+Calculate the value of e ^ x.
+
+Output:
+Two real numbers. Write each number on a separate line.
+Output format: 6 decimal places.
+The first number is the e ^ x value calculated using the exp function of the math.h header file
+The second number is the e ^ x value calculated using the sum above. Use 6 members of this amount.
+
+Вычислить значение e^x.
+
+Выходные данные:
+Два вещественных числа. Каждое число писать на отдельной строке. 
+Формат вывода: 6 знаков после запятой. 
+Первое число - значение e^x, вычисленное с использованием функции exp заголовочного файла math.h
+Второе число - значение e^x, вычисленное с использованием суммы выше. Используйте 6 членов данной суммы.
+
+
+
+
+Sample Input:
+
+1
+
+Sample Output:
+
+2.718282
+2.716667
+
+ 
+

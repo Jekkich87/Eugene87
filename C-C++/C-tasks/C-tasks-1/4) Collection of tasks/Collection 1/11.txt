@@ -1,0 +1,34 @@
+Factorial
+Write a program that calculates the factorial value for the first 10 numbers.
+
+Input data:
+are absent
+
+Output:
+10 lines of the form
+
+1! = 1
+2! = 2
+3! = 6
+
+etc.
+
+Tips: under the factorial value, select a field of 8 characters.
+
+
+Факториал
+Напишите программу, которая вычисляет значение факториала для первых 10 чисел.
+
+Входные данные:
+отсутствуют
+
+Выходные данные:
+10 строк вида
+
+1! =       1
+2! =       2
+3! =       6
+
+и т.д.
+
+Подсказки: под значение факториала выделите поле размером в 8 символов.

@@ -1,0 +1,32 @@
+As you know, the planet Saturn has a system of concentric rings consisting of ice and dust.
+
+Write a program that calculates its width and area from the known values of the inner and outer radii of the ring.
+
+Input data:
+Two natural numbers. The first ri is the inner radius of the ring in kilometers, the second ro is the outer radius of the ring in kilometers.
+
+Output:
+Two numbers. The first number is the width of the ring in kilometers (integer). The second number is the area of the ring in hectares. Format: two decimal places.
+
+
+
+Как известно планета Сатурн имеет систему концентрических колец, состоящих из льда и пыли. 
+
+Напишите программу, которая по известным значениям внутреннего и внешнего радиусов кольца вычисляет его ширину и площадь.
+
+Входные данные:
+Два натуральных числа. Первое ri - внутренний радиус кольца в километрах, второе ro - внешний радиус кольца в километрах.
+
+Выходные данные:
+Два числа.  Первое число - ширина кольца в километрах (целое число). Второе число  площадь кольца в гектарах. Формат: два знака после запятой.
+
+
+
+
+Sample Input:
+
+122200 136800
+
+Sample Output:
+
+14600 1187961846028.44
