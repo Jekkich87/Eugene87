@@ -14,3 +14,22 @@ Number 1 if k is even and −1 if k is odd.
 
 Выходные данные:
 Число 1 , если k - чётное и −1 , если k - нечётное. 
+
+
+
+Sample Input 1:
+
+91
+
+Sample Output 1:
+
+-1
+
+Sample Input 2:
+
+0
+
+Sample Output 2:
+
+1
+
