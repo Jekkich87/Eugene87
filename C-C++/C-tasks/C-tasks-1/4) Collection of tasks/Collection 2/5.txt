@@ -1,0 +1,29 @@
+The result of the decimal shift to the right for the integer 127 will be the number 12.
+Write a program that performs the decimal shift operation to the right for a three-digit integer k.
+
+Input data:
+A three-digit integer k.
+
+Output:
+The number obtained from k by a decimal shift to the right.
+
+
+Результатом операции десятичного сдвига вправо для целого числа 127 будет число 12 . 
+Написать программу, которая осуществляет операцию десятичного сдвига вправо для целого трёхзначного числа k.
+
+Входные данные:
+Целое трёхзначное число k.
+
+Выходные данные:
+Число, полученное из числа k десятичным сдвигом вправо.
+
+
+
+Sample Input:
+
+850
+
+Sample Output:
+
+85
+

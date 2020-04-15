@@ -1,0 +1,45 @@
+Determine whether all entered numbers are equal to zero.
+
+Input data:
+Five integers: x1, x2, x3, x4, x5. (−100≤xi≤100).
+
+Output:
+Number 0, if all numbers x1, x2, x3, x4, x5 are equal to zero, otherwise a positive number formed by a certain rule that you have to formulate yourself.
+By analyzing the input and output for the examples below, you need to understand how the output is derived from the input.
+
+A task without conditions and cycles!
+A simple sum of all numbers will not work.
+
+
+
+
+Определить равны ли нулю все введённые числа.
+
+Входные данные:
+Пять целых чисел: x1,x2,x3,x4,x5. (−100≤xi≤100).
+
+Выходные данные:
+Число 0 , если все числа x1,x2,x3,x4,x5 равны нулю, иначе положительное число, формируемое по определенному правилу, которое вам предстоит сформулировать самостоятельно. 
+Анализируя вход и выход для примеров ниже, вам нужно понять, как из входных данных получаются выходные.
+
+Задача без условий и циклов!
+Простая сумма всех чисел не подойдёт.
+
+
+
+Sample Input 1:
+
+2 0 0 0 0
+
+Sample Output 1:
+
+4
+
+Sample Input 2:
+
+0 3 0 2 0
+
+Sample Output 2:
+
+13
+

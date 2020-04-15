@@ -1,0 +1,35 @@
+Determine if an integer is even or odd.
+
+Input data:
+One integer k. (−100≤k≤100).
+
+Output:
+Number 1 if k is even, and −1 if k is odd.
+
+
+
+Определить, является ли целое число чётным или нечётным.
+
+Входные данные:
+Одно целое число k. (−100≤k≤100).
+
+Выходные данные:
+Число 1, если k - чётное, и −1 , если k - нечётное.
+
+
+Sample Input 1:
+
+2
+
+Sample Output 1:
+
+1
+
+Sample Input 2:
+
+-2
+
+Sample Output 2:
+
+1
+
