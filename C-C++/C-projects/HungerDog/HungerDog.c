@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<conio.h>
+#include<time.h>
 
 int main(void) {
 
@@ -12,6 +13,8 @@ int main(void) {
     int ax=5,ay=3;      //starting position for apple
 
     char key; //control key
+
+    srand(time(NULL));
 
     do{
         sprintf(mas[0], "####################"); //Top border
@@ -44,6 +47,11 @@ int main(void) {
         if(mas[y][x]=='#'){
             x=ox;
             y=oy;
+        }
+
+        if(mas[y][x]==mas[ay][ax]){  //generating new position of apple
+            ax=rand()*1.0/RAND_MAX*18+1;
+            ay=rand()*1.0/RAND_MAX*8+1;
         }
 
     }while(key!='e');
