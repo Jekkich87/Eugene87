@@ -30,13 +30,19 @@ int main(void) {
             printf("%s\n",mas[i]);
         }
 
-        ox=x,oy=y; 
+        ox=x;
+        oy=y; 
 
         key=getch();
         if(key=='w') y--; // controling position of dog
         if(key=='s') y++;
         if(key=='a') x--;
         if(key=='d') x++;
+
+        if(mas[y][x]=='#'){
+            x=ox;
+            y=oy;
+        }
 
     }while(key!='e');
 
