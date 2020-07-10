@@ -4,11 +4,12 @@
 
 int main(void) {
 
-    char mas[10][21];  //Generating game field // Генерация игрового поля
+    char mas[10][21];    //Generating game field // Генерация игрового поля
 
     int i=0;
-    int x=10,y=5; // starting position for Dog
-    int ox,oy; //Dog`s position before move
+    int x=10,y=5;       // starting position for Dog
+    int ox,oy;          //Dog`s position before move
+    int ax=5,ay=3;      //starting position for apple
 
     char key; //control key
 
@@ -21,7 +22,8 @@ int main(void) {
 
         sprintf(mas[9], "####################"); //Bottom border
 
-        mas[y][x]='@'; // rendering dog in te field
+        mas[y][x]='@'; // rendering dog in the field
+        mas[ay][ax]='*';  // rendering apple in the field
 
         system("cls");  //clearing display;
 
