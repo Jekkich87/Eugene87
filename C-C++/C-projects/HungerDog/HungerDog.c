@@ -11,6 +11,7 @@ int main(void) {
     int x=10,y=5;       // starting position for Dog
     int ox,oy;          //Dog`s position before move
     int ax=5,ay=3;      //starting position for apple
+    int count=0;
 
     char key; //control key
 
@@ -35,14 +36,18 @@ int main(void) {
             printf("%s\n",mas[i]);
         }
 
+        printf("\n\n");
+        printf("Count = %d",count); //counting of eated apples
+        printf("\n\n");
+
         ox=x;
         oy=y; 
 
         key=getch();
-        if(key=='w') y--; // controling position of dog
-        if(key=='s') y++;
-        if(key=='a') x--;
-        if(key=='d') x++;
+        if(key==72) y--; // controling position of dog
+        if(key==80) y++;
+        if(key==75) x--;
+        if(key==77) x++;
 
         if(mas[y][x]=='#'){
             x=ox;
@@ -54,7 +59,7 @@ int main(void) {
             ay=rand()*1.0/RAND_MAX*8+1;
         }
 
-    }while(key!='e');
+    }while(key!=27);
 
 
     return 0;
