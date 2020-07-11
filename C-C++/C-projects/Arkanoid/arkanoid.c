@@ -1,21 +1,39 @@
+/*              COMMENTS and DESCRIPTIONS FOR ELEMENTS:
+
+*/
+
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
 #include<string.h>
 
-#define width 65                //dimensions of gamefield
-#define height 25
+#define width 65                    //dimensions of gamefield
+#define height 25                  //dimensions of gamefield
 
 char field[height][width+1];      //defining gamefield
 
+typedef struct{
 
-void initField(void);           // init gamefiled
-void showField(void);           // displaying gamefield
+    int x,y; //position
+    int trWidth; //racket width
+
+} TRacket;                         //defining t-racket
+TRacket racket;                    
+
+
+void initField(void);            // init gamefiled
+void showField(void);           // disp gamefield
+
+void initRacket(void);         // init t-racket
+void putRacket(void);         // placing t-racket on the field
 
 
 int main(void) {
 
+    initRacket();
     initField();
+
+    putRacket();
     showField();
 
     return 0;
@@ -35,7 +53,7 @@ void initField(void){
         field[1][i]=' ';    
     }
 
-    for(i=2;i<height-1;i++){
+    for(i=2;i<height;i++){
         strncpy(field[i],field[1],width+1);
     }
 
@@ -48,6 +66,23 @@ void showField(void){
 
     for(i=0;i<height;i++){
         printf("%s\n",field[i]);
+    }
+
+}
+
+void initRacket(void){
+
+    racket.trWidth=7;
+    racket.x=(width-racket.trWidth)/2;
+    racket.y=height-1;
+
+}
+
+void putRacket(void){
+
+    int i=0;
+    for(i=racket.x;i<racket.x+racket.trWidth;i++){
+        field[racket.y][i]='@';
     }
 
 }
