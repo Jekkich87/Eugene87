@@ -7,6 +7,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<windows.h>
+#include<stdbool.h>
 
 #define width 65                    //dimensions of gamefield
 #define height 25                  //dimensions of gamefield
@@ -29,7 +30,8 @@ void initRacket(void);         // init t-racket
 void putRacket(void);         // placing t-racket on the field
 void moveRacket(int x);       // function for move racket; x - initiate left corner of racket
 
-void setcur(int x,int y);
+void setcur(int x,int y);     //setting cursor position;
+void hidecur(void);
 
 int main(void) {
 
@@ -41,6 +43,7 @@ int main(void) {
         
         //system("cls");
         setcur(0,0);
+        hidecur();
         
         initField();
         putRacket();
@@ -131,5 +134,14 @@ void setcur(int x,int y){
     coord.Y=y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
     Sleep(10);
+
+}
+
+void hidecur(void){
+
+    CONSOLE_CURSOR_INFO CCI;
+    CCI.bVisible=false;
+    CCI.dwSize=1;
+    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE),&CCI);
 
 }
