@@ -9,44 +9,57 @@
 #include<windows.h>
 #include<stdbool.h>
 
-#define width 65                    //dimensions of gamefield
-#define height 25                  //dimensions of gamefield
+#define width 65                    // dimensions of gamefield
+#define height 25                   // dimensions of gamefield
 
-char field[height][width+1];      //defining gamefield
+char field[height][width+1];        // defining gamefield
 
 typedef struct{
 
-    int x,y; //position
-    int trWidth; //racket width
+    int x,y;                         // position
+    int trWidth;                     // racket width
 
-} TRacket;                         //defining t-racket
-TRacket racket;                    
+} TRacket;                           // defining t-racket
+TRacket racket;
+
+typedef struct{
+    int x,y;
+}TBall;                              // defining tennis ball
+TBall ball;
 
 
-void initField(void);            // init gamefiled
-void showField(void);           // disp gamefield
 
-void initRacket(void);         // init t-racket
-void putRacket(void);         // placing t-racket on the field
-void moveRacket(int x);       // function for move racket; x - initiate left corner of racket
+void initField(void);               // init gamefiled
+void showField(void);               // disp gamefield
 
-void setcur(int x,int y);     //setting cursor position;
-void hidecur(void);           //hiding cusor.
+void initRacket(void);              // init t-racket
+void putRacket(void);               // placing t-racket on the field
+void moveRacket(int x);             // function to move racket; x - initiate left corner of racket
+
+void initBall();                    // initiating t-ball
+void putBall();                     // placint t-ball on the field                   
+void moveBall(int x,int y);         // function to move ball
+
+void setCursor(int x,int y);        // setting cursor position;
+void hideCursor(void);              // hiding cusor.
 
 int main(void) {
 
-    char ctrl;
+    //char ctrl;
+    system("cls");
+    hideCursor();
 
     initRacket();
+    initBall();
 
     do{
-        
-        //system("cls");
-        setcur(0,0);
-        hidecur();
+
+        setCursor(0,0);      
         
         initField();
         putRacket();
+        putBall();
+
         showField();
 
         //ctrl=getch();
@@ -57,6 +70,10 @@ int main(void) {
         if(GetKeyState(VK_RIGHT)<0){
             moveRacket(racket.x+1);
         }
+
+        moveBall(racket.x+racket.trWidth/2,racket.y-1);
+
+        Sleep(10);
 
     }while(GetKeyState(VK_ESCAPE)>=0);
 
@@ -128,7 +145,7 @@ void moveRacket(int x){
 
 }
 
-void setcur(int x,int y){
+void setCursor(int x,int y){
     COORD coord;
     coord.X=x;
     coord.Y=y;
@@ -137,11 +154,31 @@ void setcur(int x,int y){
 
 }
 
-void hidecur(void){
+void hideCursor(void){
 
     CONSOLE_CURSOR_INFO CCI;
     CCI.bVisible=false;
     CCI.dwSize=1;
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE),&CCI);
+
+}
+
+void initBall(){
+
+    ball.x=2;
+    ball.y=2;
+
+}
+
+void putBall(){
+
+    field[ball.y][ball.x]='*';
+
+}
+
+void moveBall(int x,int y){
+
+    ball.x=x;
+    ball.y=y;
 
 }
