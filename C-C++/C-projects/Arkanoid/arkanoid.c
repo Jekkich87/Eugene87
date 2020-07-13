@@ -31,7 +31,7 @@ void putRacket(void);         // placing t-racket on the field
 void moveRacket(int x);       // function for move racket; x - initiate left corner of racket
 
 void setcur(int x,int y);     //setting cursor position;
-void hidecur(void);
+void hidecur(void);           //hiding cusor.
 
 int main(void) {
 
