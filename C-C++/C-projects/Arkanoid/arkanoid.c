@@ -8,6 +8,7 @@
 #include<string.h>
 #include<windows.h>
 #include<stdbool.h>
+#include<math.h>
 
 #define width 65                    // dimensions of gamefield
 #define height 25                   // dimensions of gamefield
@@ -16,15 +17,20 @@ char field[height][width+1];        // defining gamefield
 
 typedef struct{
 
-    int x,y;                         // position
-    int trWidth;                     // racket width
+    int x,y;                        // position
+    int trWidth;                    // racket width
 
-} TRacket;                           // defining t-racket
+} TRacket;                          // defining t-racket
 TRacket racket;
 
 typedef struct{
-    int x,y;
-}TBall;                              // defining tennis ball
+
+    float x,y;                      // coords of ball;
+    int ix,iy;                      // int coords of ball(counted form float coords)
+    float alfa;                     // angle for balls`s direction
+    float speed;                    // ball`s speed
+
+}TBall;                             // defining tennis ball
 TBall ball;
 
 
@@ -38,12 +44,15 @@ void moveRacket(int x);             // function to move racket; x - initiate lef
 
 void initBall();                    // initiating t-ball
 void putBall();                     // placint t-ball on the field                   
-void moveBall(int x,int y);         // function to move ball
+void moveBall(float x, float y);    // function to move ball
+void autoMoveBall(void);            // claculate new position of ball, depending on ball`s direction and speed
 
 void setCursor(int x,int y);        // setting cursor position;
 void hideCursor(void);              // hiding cusor.
 
 int main(void) {
+
+    BOOL runBall=FALSE;             // starts ball`s movement
 
     //char ctrl;
     system("cls");
@@ -54,7 +63,11 @@ int main(void) {
 
     do{
 
-        setCursor(0,0);      
+        setCursor(0,0);
+
+        if(runBall){
+            autoMoveBall();
+        }      
         
         initField();
         putRacket();
@@ -71,7 +84,14 @@ int main(void) {
             moveRacket(racket.x+1);
         }
 
-        moveBall(racket.x+racket.trWidth/2,racket.y-1);
+        if(GetKeyState('W')<0){
+            runBall=TRUE;
+        }
+
+        if(!runBall){
+            moveBall(racket.x+racket.trWidth/2,racket.y-1);
+        }
+        
 
         Sleep(10);
 
@@ -165,20 +185,34 @@ void hideCursor(void){
 
 void initBall(){
 
-    ball.x=2;
-    ball.y=2;
+    // ball.x=2;
+    // ball.y=2;
+
+    moveBall(2,2);
+
+    ball.alfa=-1;
+    ball.speed=0.5;
 
 }
 
 void putBall(){
 
-    field[ball.y][ball.x]='*';
+    field[ball.iy][ball.ix]='*';
 
 }
 
-void moveBall(int x,int y){
+void moveBall(float x, float y){
 
     ball.x=x;
     ball.y=y;
+    ball.ix=(int)round(ball.x);
+    ball.iy=(int)round(ball.y);
+
+}
+
+void autoMoveBall(void){
+
+    moveBall(ball.x+cos(ball.alfa)*ball.speed,
+             ball.y+sin(ball.alfa)*ball.speed);
 
 }
