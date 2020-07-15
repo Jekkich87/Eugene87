@@ -15,8 +15,9 @@
 #define height 25                   // dimensions of gamefield
 
 char field[height][width+1];        // defining gamefield
-int hitCount=0;
-int maxHitCount=0;
+int hitCount=0;                     // hit counter
+int maxHitCount=0;                  // max hit counter
+
 
 typedef struct{
 
@@ -38,8 +39,8 @@ TBall ball;
 TBall ballPos;                      // ball position
 
 
-void initField(void);               // init gamefiled
-void showField(void);               // disp gamefield
+void initField(int level);               // init gamefiled; added level swithcer and inititation
+void showField(int level);               // disp gamefield; 
 
 void initRacket(void);              // init t-racket
 void putRacket(void);               // placing t-racket on the field
@@ -55,6 +56,7 @@ void hideCursor(void);              // hiding cusor.
 
 int main(void) {
 
+    int level=0;                    // level
     BOOL runBall=FALSE;             // starts ball`s movement
 
     //char ctrl;
@@ -70,13 +72,35 @@ int main(void) {
 
         if(runBall){
             autoMoveBall();
+        }
+
+        if(ball.iy>=height){        // cheking if ball run out from field
+
+            runBall=FALSE;
+
+            if(hitCount>maxHitCount){
+                maxHitCount=hitCount;
+            }
+
+            hitCount=0;
+
+        }
+
+        if(hitCount==6){
+
+            level++;
+            runBall=FALSE;
+            hitCount=0;
+            maxHitCount=0;
+
         }      
         
-        initField();
+        initField(level);
+
         putRacket();
         putBall();
 
-        showField();
+        showField(level);
 
         //ctrl=getch();
 
@@ -104,7 +128,7 @@ int main(void) {
 
 }
 
-void initField(void){
+void initField(int level){
 
     int i=0;
 
@@ -124,15 +148,51 @@ void initField(void){
         strncpy(field[i],field[1],width+1);
     }
 
+    
+
+    if(level==1) {
+        for(i=5;i<15;i++){
+            field[3][i]=='#';
+        } 
+    }
+
+    if(level==2) {
+        
+        for(i=13;i<30;i++){
+                field[5][i]='#';
+        } 
+        for(i=40;i<54;i++){
+                field[10][i]='#';
+        }
+
+    }
 
 }
 
-void showField(void){
+void showField(int level){
 
     int i=0;
 
     for(i=0;i<height;i++){
-        printf("%s\n",field[i]);
+
+        printf("%s",field[i]);
+
+        if(i==4){
+            printf("   Current level:  %d   ", level);
+        }
+
+        if(i==5){
+            printf("   Hit counter:  %d   ", hitCount);
+        }
+
+        if(i==6){
+            printf("   Max hint count:  %d", maxHitCount);
+        }
+
+        if(i<height-1){
+            printf("\n");
+        }
+
     }
 
 }
@@ -169,6 +229,7 @@ void moveRacket(int x){
 }
 
 void setCursor(int x,int y){
+
     COORD coord;
     coord.X=x;
     coord.Y=y;
@@ -219,16 +280,18 @@ void autoMoveBall(void){
         ball.alfa+=M_PI*2;
     }
 
-    if(ball.alfa>0){
+    if(ball.alfa>M_PI*2){
         ball.alfa-=M_PI*2;
     }
+
+    ballPos=ball;
 
     moveBall(ball.x+cos(ball.alfa)*ball.speed,
              ball.y+sin(ball.alfa)*ball.speed);
 
     if((field[ball.iy][ball.ix]=='#')||(field[ball.iy][ball.ix]=='@')){
 
-        if((field[ball.iy][ball.ix]=='#')||(field[ball.iy][ball.ix]=='@')){
+        if(field[ball.iy][ball.ix]=='@'){
             hitCount++;
         }
 
@@ -252,7 +315,7 @@ void autoMoveBall(void){
 
         }
 
-        else if(ball.iy=ballPos.iy){
+        else if(ball.iy==ballPos.iy){
             ballPos.alfa=(2*M_PI-ballPos.alfa)+M_PI;
         }
 
