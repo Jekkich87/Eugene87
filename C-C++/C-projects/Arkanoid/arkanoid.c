@@ -1,7 +1,7 @@
 /*              COMMENTS and DESCRIPTIONS FOR ELEMENTS:
 
 */
-
+#define _USE_MATH_DEFINES
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
@@ -10,10 +10,13 @@
 #include<stdbool.h>
 #include<math.h>
 
+
 #define width 65                    // dimensions of gamefield
 #define height 25                   // dimensions of gamefield
 
 char field[height][width+1];        // defining gamefield
+int hitCount=0;
+int maxHitCount=0;
 
 typedef struct{
 
@@ -32,7 +35,7 @@ typedef struct{
 
 }TBall;                             // defining tennis ball
 TBall ball;
-
+TBall ballPos;                      // ball position
 
 
 void initField(void);               // init gamefiled
@@ -155,7 +158,7 @@ void moveRacket(int x){
 
     racket.x=x;
 
-    if(racket.x<1){     // checking if racket run out from borders
+    if(racket.x<1){                         // checking if racket run out from borders
         racket.x=1;
     }
 
@@ -212,7 +215,55 @@ void moveBall(float x, float y){
 
 void autoMoveBall(void){
 
+    if(ball.alfa<0){
+        ball.alfa+=M_PI*2;
+    }
+
+    if(ball.alfa>0){
+        ball.alfa-=M_PI*2;
+    }
+
     moveBall(ball.x+cos(ball.alfa)*ball.speed,
              ball.y+sin(ball.alfa)*ball.speed);
+
+    if((field[ball.iy][ball.ix]=='#')||(field[ball.iy][ball.ix]=='@')){
+
+        if((field[ball.iy][ball.ix]=='#')||(field[ball.iy][ball.ix]=='@')){
+            hitCount++;
+        }
+
+        if((ball.ix!=ballPos.ix)&&(ball.iy!=ballPos.iy)){
+
+            if(field[ballPos.iy][ballPos.ix]==field[ball.iy][ballPos.ix]){
+                ballPos.alfa=ballPos.alfa+M_PI;
+            }
+
+            else{
+
+                if(field[ballPos.iy][ballPos.ix]=='#'){
+                    ballPos.alfa=(2*M_PI-ballPos.alfa)+M_PI;
+                }
+
+                else{
+                    ballPos.alfa=(2*M_PI-ballPos.alfa);
+                }
+
+            }
+
+        }
+
+        else if(ball.iy=ballPos.iy){
+            ballPos.alfa=(2*M_PI-ballPos.alfa)+M_PI;
+        }
+
+        else{
+            ballPos.alfa=(2*M_PI-ballPos.alfa);
+        }
+
+        ball=ballPos;
+
+        autoMoveBall();
+
+    }
 
 }
