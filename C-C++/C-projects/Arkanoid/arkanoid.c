@@ -51,6 +51,10 @@ void putBall();                     // placint t-ball on the field
 void moveBall(float x, float y);    // function to move ball
 void autoMoveBall(void);            // claculate new position of ball, depending on ball`s direction and speed
 
+void showInstructions(void);        // game instructions
+
+void showPrewiev(int level);        // level prewiev
+
 void setCursor(int x,int y);        // setting cursor position;
 void hideCursor(void);              // hiding cusor.
 
@@ -58,13 +62,15 @@ int main(void) {
 
     int level=0;                    // level
     BOOL runBall=FALSE;             // starts ball`s movement
-
+    showInstructions();
     //char ctrl;
     system("cls");
     hideCursor();
 
     initRacket();
     initBall();
+
+    showPrewiev(level);
 
     do{
 
@@ -92,6 +98,7 @@ int main(void) {
             runBall=FALSE;
             hitCount=0;
             maxHitCount=0;
+            showPrewiev(level);
 
         }      
         
@@ -326,4 +333,28 @@ void autoMoveBall(void){
 
     }
 
+}
+
+void showPrewiev(int level){
+
+    system("cls");
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n \t\t\t\t LEVEL:  %d",level);
+    Sleep(1000);
+    system("cls");
+
+}
+
+void showInstructions(void){
+
+    system("cls");
+    printf("\n\n\n\n \t\t\t\t This is arkanoid.\n");
+    printf("\n\n \t\t\t\t You must hit ball by tennis racket.\n");
+    printf("\n\n \t\t\t\t To start the game press \"W\"-button.\n");
+    printf("\n\n \t\t\t\t To move racket to the left - press \"Left arrow\"-button.\n");
+    printf("\n\n \t\t\t\t To move racket to the right - press \"Right arrow\"-button.\n");
+    printf("\n\n \t\t\t\t If you hit ball 6 times, you will switch to the next level.\n");
+    printf("\n\n \t\t\t\t To leave the game press \"ESC\"-button\n");
+    printf("\n\n \t\t\t\t GOOD LUCK!!!\n");
+    Sleep(10000);
+    system("cls");
 }
