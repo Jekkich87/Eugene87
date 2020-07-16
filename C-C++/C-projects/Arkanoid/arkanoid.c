@@ -146,25 +146,22 @@ void initField(int level){
 
     for(i=2;i<height;i++){
         strncpy(field[i],field[1],width+1);
+    } 
+
+    if(level==1){
+        for(i=15;i<30;i++){
+            field[3][i]='#';
+        }
     }
 
-    
-
-    if(level==1) {
-        for(i=5;i<15;i++){
-            field[3][i]=='#';
-        } 
-    }
-
-    if(level==2) {
-        
-        for(i=13;i<30;i++){
-                field[5][i]='#';
-        } 
-        for(i=40;i<54;i++){
-                field[10][i]='#';
+    if(level==2){
+        for(i=30;i<57;i++){
+            field[10][i]='#';
         }
 
+        for(i=2;i<19;i++){
+            field[18][i]='#';
+        }
     }
 
 }
@@ -234,7 +231,7 @@ void setCursor(int x,int y){
     coord.X=x;
     coord.Y=y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
-    Sleep(10);
+    //Sleep(10);
 
 }
 
