@@ -11,22 +11,26 @@
 char mapField[mapHeight][mapWidth+1];
 
 typedef struct SObject{
+
     float x,y;
-}TObject;                                                   // coords of player;
+    float objWidth,objHeight;
+
+}TObject;                                                                                    // coords of player;
 TObject mario;
 
 
 void initMap(void);
 void showMap(void);
 
-void setObjPos(TObject *obj,float xPos, float yPos);        // setting position for player;
-void putObjOnMap(TObject obj);                              // placing player on map
+void setObjPos(TObject *obj,float xPos, float yPos);                                        // setting position for player;
+void putObjOnMap(TObject obj);                                                              // placing player on map
+void initObj(TObject *obj, float xPos, float yPos, float oWidth, float oHeight);            // adding vidth and height for player char
 
 int main(void){
 
     system("cls");
 
-    setObjPos(&mario,20,10);
+    initObj(&mario,39,10,3,3);
 
     initMap();
 
@@ -73,9 +77,28 @@ void setObjPos(TObject *obj,float xPos, float yPos){
 
 void putObjOnMap(TObject obj){
 
+    int i=0,j=0;
+
     int ix=(int)round(obj.x);
     int iy=(int)round(obj.y);
-    mapField[iy][ix]='@';
+
+    int iWidth=(int)round(obj.objWidth);
+    int iHeight=(int)round(obj.objHeight);
+
+    for(i=ix;i<(ix+iWidth);i++){
+        for(j=iy;j<(iy+iHeight);j++){
+            mapField[j][i]='@';
+        }
+    }
+    
+
+}
+
+void initObj(TObject *obj, float xPos, float yPos, float oWidth, float oHeight){
+
+    setObjPos(obj, xPos,yPos);
+    (*obj).objWidth=oWidth;
+    (*obj).objHeight=oHeight;
 
 }
 
