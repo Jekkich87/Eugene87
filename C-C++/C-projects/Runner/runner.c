@@ -14,30 +14,54 @@ typedef struct SObject{
 
     float x,y;
     float objWidth,objHeight;
+    float vertSpeed;                                            // vertical speed of character
 
-}TObject;                                                                                    // coords of player;
+}TObject;                                                       // coords of player;
 TObject mario;
 
 
 void initMap(void);
 void showMap(void);
 
-void setObjPos(TObject *obj,float xPos, float yPos);                                        // setting position for player;
-void putObjOnMap(TObject obj);                                                              // placing player on map
-void initObj(TObject *obj, float xPos, float yPos, float oWidth, float oHeight);            // adding vidth and height for player char
+void setObjPos(TObject *obj,float xPos, float yPos);            // setting position for player;
+void putObjOnMap(TObject obj);                                  // placing player on map
+void initObj(TObject *obj, float xPos, float yPos, 
+                     float oWidth, float oHeight);              // adding vidth and height for player char
+void vertMoveObj(TObject *obj);                                 // vertical movement of char
+
+BOOL isPosInMap(int x,int y);                                   //cheking, is position of cha ron map or not 
+
+void setCursor(int x,int y);
+void hideCursor(void);
 
 int main(void){
+
+
+    system("mode 80,25");
+    //system("mode con cols=80 lines=25");
+    setCursor(0,0);
+    hideCursor();
 
     system("cls");
 
     initObj(&mario,39,10,3,3);
 
-    initMap();
+    do{
 
-    putObjOnMap(mario);
+        initMap();
 
-    showMap();
+        vertMoveObj(&mario);
+        putObjOnMap(mario);
 
+        setCursor(0,0);
+        
+        showMap();
+
+        Sleep(10);
+
+    }while(GetKeyState(VK_ESCAPE)>=0);
+
+    
 }
 
 void initMap(void){
@@ -63,7 +87,7 @@ void showMap(void){
     mapField[mapHeight-1][mapWidth-1]='\0';
 
     for(j=0;j<mapHeight;j++){
-        printf("%s\n",mapField[j]);
+        printf("%s",mapField[j]);
     }
  
 }
@@ -87,10 +111,11 @@ void putObjOnMap(TObject obj){
 
     for(i=ix;i<(ix+iWidth);i++){
         for(j=iy;j<(iy+iHeight);j++){
-            mapField[j][i]='@';
+            if(isPosInMap(i,j)){
+                mapField[j][i]='@';
+            }
         }
-    }
-    
+    }  
 
 }
 
@@ -99,6 +124,36 @@ void initObj(TObject *obj, float xPos, float yPos, float oWidth, float oHeight){
     setObjPos(obj, xPos,yPos);
     (*obj).objWidth=oWidth;
     (*obj).objHeight=oHeight;
+    (*obj).vertSpeed=0;
+
+}
+
+void vertMoveObj(TObject *obj){
+
+    (*obj).vertSpeed+=0.5;
+    setObjPos(obj,(*obj).x,(*obj).y+(*obj).vertSpeed);
+}
+
+BOOL isPosInMap(int x,int y){
+    return((x>=0)&&(x<mapWidth)&&(y>=0)&&(y<mapHeight));
+}
+
+void setCursor(int x,int y){
+
+    COORD coord;
+    coord.X=x;
+    coord.Y=y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
+    //Sleep(10);
+
+}
+
+void hideCursor(void){
+
+    CONSOLE_CURSOR_INFO CCI;
+    CCI.bVisible=false;
+    CCI.dwSize=1;
+    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE),&CCI);
 
 }
 
