@@ -18,7 +18,7 @@ typedef struct SObject{
 
 }TObject;                                                       // coords of player;
 TObject mario;
-
+TObject brick[1];
 
 void initMap(void);
 void showMap(void);
@@ -29,7 +29,9 @@ void initObj(TObject *obj, float xPos, float yPos,
                      float oWidth, float oHeight);              // adding vidth and height for player char
 void vertMoveObj(TObject *obj);                                 // vertical movement of char
 
-BOOL isPosInMap(int x,int y);                                   //cheking, is position of cha ron map or not 
+BOOL isPosInMap(int x,int y);                                   //cheking, is position of cha ron map or not
+BOOL isCollision(TObject o1,TObject o2);                        //checking for collision between 2 objects 
+
 
 void setCursor(int x,int y);
 void hideCursor(void);
@@ -38,13 +40,14 @@ int main(void){
 
 
     system("mode 80,25");
-    //system("mode con cols=80 lines=25");
+    system("mode con cols=80 lines=25");
     setCursor(0,0);
     hideCursor();
 
     system("cls");
 
     initObj(&mario,39,10,3,3);
+    initObj(brick,20,20,40,5);
 
     do{
 
@@ -52,6 +55,11 @@ int main(void){
 
         vertMoveObj(&mario);
         putObjOnMap(mario);
+        putObjOnMap(brick[0]);
+
+        if(GetKeyState(VK_SPACE)<0){                            //mario can jump)
+            mario.vertSpeed=-0.7;
+        }
 
         setCursor(0,0);
         
@@ -128,14 +136,26 @@ void initObj(TObject *obj, float xPos, float yPos, float oWidth, float oHeight){
 
 }
 
+
+
 void vertMoveObj(TObject *obj){
 
     (*obj).vertSpeed+=0.5;
     setObjPos(obj,(*obj).x,(*obj).y+(*obj).vertSpeed);
+    if(isCollision(*obj,brick[0])){
+        (*obj).y-=(*obj).vertSpeed;
+        (*obj).vertSpeed=0;
+    }
+
 }
 
 BOOL isPosInMap(int x,int y){
     return((x>=0)&&(x<mapWidth)&&(y>=0)&&(y<mapHeight));
+}
+
+BOOL isCollision(TObject o1,TObject o2){
+    return(((o1.x+o1.objWidth)>o2.x)&&(o1.x<(o2.x+o2.objWidth))
+    &&((o1.y+o1.objHeight)>o2.y)&&(o1.y<(o2.y+o2.objHeight)));
 }
 
 void setCursor(int x,int y){
