@@ -9,6 +9,7 @@
 #define mapHeight 25
 
 char mapField[mapHeight][mapWidth+1];
+int lvl=1;
 
 typedef struct SObject{
 
@@ -36,7 +37,7 @@ BOOL isPosInMap(int x,int y);                                   // cheking, is p
 BOOL isCollision(TObject o1,TObject o2);                        // checking for collision between 2 objects 
 
 void horizonMoveMap(float dx);                                  // horizontal movement for map. char can now walk along the map/
-void createLevel(void);
+void createLevel(int lvl);
 
 
 void setCursor(int x,int y);
@@ -47,12 +48,13 @@ int main(void){
 
     system("mode 80,25");
     system("mode con cols=80 lines=25");
+    system("color 9F");
     setCursor(0,0);
     hideCursor();
 
     system("cls");
 
-    createLevel();
+    createLevel(lvl);
 
     do{
 
@@ -77,7 +79,7 @@ int main(void){
         }
 
         if(mario.y>mapHeight){ //if mario falls out the map, level reloading;
-            createLevel(); 
+            createLevel(lvl); 
         }
 
         setCursor(0,0);
@@ -169,7 +171,11 @@ void vertMoveObj(TObject *obj){
             (*obj).vertSpeed=0;
             (*obj).isFly=FALSE;
             if(brick[i].cType=='+'){
-                createLevel();
+                lvl++;
+                if(lvl>2){
+                    lvl=1;
+                }
+                createLevel(lvl);
                 Sleep(1000);
             }
             break;
@@ -205,18 +211,29 @@ void horizonMoveMap(float dx){
 
 }   
 
-void createLevel(void){
+void createLevel(int lvl){
 
     initObj(&mario,39,10,3,3,'@');
 
-    brickLength=6;
-    brick=realloc(brick,brickLength);
-    initObj(brick+0,20,20,40,5,'#');
-    initObj(brick+1,60,15,10,10,'#');
-    initObj(brick+2,80,20,20,5,'#');
-    initObj(brick+3,120,15,10,10,'#');
-    initObj(brick+4,160,20,40,5,'#');
-    initObj(brick+4,170,20,20,7,'+'); //brick for ending level
+    if(lvl==1){
+        brickLength=6;
+        brick=realloc(brick,brickLength);
+        initObj(brick+0,20,20,40,5,'#');
+        initObj(brick+1,60,15,10,10,'#');
+        initObj(brick+2,80,20,20,5,'#');
+        initObj(brick+3,120,15,10,10,'#');
+        initObj(brick+4,160,20,15,5,'#');
+        initObj(brick+5,185,20,20,7,'+');                   //brick for ending level
+    }
+
+    if(lvl==2){
+        brickLength=4;
+        brick=realloc(brick,brickLength);
+        initObj(brick+0,20,20,40,5,'#');
+        initObj(brick+1,80,15,15,10,'#');
+        initObj(brick+2,95,20,20,5,'#');
+        initObj(brick+3,125,20,20,7,'+');   
+    }
     
 }
 
