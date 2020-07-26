@@ -18,6 +18,7 @@ typedef struct SObject{
     float vertSpeed;                                            // vertical speed of character
     BOOL isFly;                                                 //checking, is Mario on the air or not
     char cType;
+    float horizontalSpeed;
 
 }TObject;                                                       // coords of player;
 TObject mario;
@@ -42,6 +43,7 @@ BOOL isCollision(TObject o1,TObject o2);                        // checking for 
 void horizonMoveMap(float dx);                                  // horizontal movement for map. char can now walk along the map/
 void createLevel(int lvl);
 
+void horizonMoveObj(TObject *obj);                              // horizontal speed for enemie
 
 void setCursor(int x,int y);
 void hideCursor(void);
@@ -89,6 +91,7 @@ int main(void){
         for(int i=0;i<movingLength;i++){
             putObjOnMap(moving[i]);                                                     // placing enemie on the map
             vertMoveObj(moving+i);                                                      // addint ot enemie vertical speed. Now it can fall;
+            horizonMoveObj(moving+i);
         }
 
         setCursor(0,0);
@@ -163,6 +166,7 @@ void initObj(TObject *obj, float xPos, float yPos, float oWidth, float oHeight,c
     (*obj).objHeight=oHeight;
     (*obj).vertSpeed=0;
     (*obj).cType=inType;
+    (*obj).horizontalSpeed=0.2;
 
 }
 
@@ -218,6 +222,10 @@ void horizonMoveMap(float dx){
         brick[i].x+=dx;
     }
 
+    for(int i=0;i<movingLength;i++){
+        moving[i].x+=dx;
+    }
+
 }   
 
 void createLevel(int lvl){
@@ -232,7 +240,7 @@ void createLevel(int lvl){
         initObj(brick+2,80,20,20,5,'#');
         initObj(brick+3,120,15,10,10,'#');
         initObj(brick+4,160,20,15,5,'#');
-        initObj(brick+5,185,20,20,7,'+');                   //brick for ending level
+        initObj(brick+5,185,20,20,7,'+');                                   //brick for ending level
         movingLength=1;
         moving=realloc(moving,sizeof(*moving)*movingLength);
         initObj(moving+0,25,10,3,2,'o');
@@ -247,6 +255,25 @@ void createLevel(int lvl){
         initObj(brick+3,125,20,20,7,'+');   
     }
     
+}
+
+void horizonMoveObj(TObject *obj){
+    obj[0].x+=obj[0].horizontalSpeed;
+
+    for(int i=0;i<brickLength;i++){                                            // checking for collision between enemie adn brick
+        if(isCollision(obj[0],brick[i])){
+            obj[0].x-=obj[0].horizontalSpeed;
+            obj[0].horizontalSpeed=-obj[0].horizontalSpeed;
+            return;
+        }
+    }
+    TObject tmp=*obj;
+    vertMoveObj(&tmp);
+
+    if(tmp.isFly==true){                                                       // checking for enemie fall. if yes - undo movement and going back 
+        obj[0].x-=obj[0].horizontalSpeed;
+        obj[0].horizontalSpeed=-obj[0].horizontalSpeed;
+    }
 }
 
 void setCursor(int x,int y){
