@@ -24,6 +24,9 @@ TObject mario;
 TObject *brick=NULL;
 int brickLength;
 
+TObject *moving=NULL;                                           // enemies;
+int movingLength;                                               // size of enemie;
+
 void initMap(void);
 void showMap(void);
 
