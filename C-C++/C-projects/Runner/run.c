@@ -44,6 +44,8 @@ void horizonMoveMap(float dx);                                  // horizontal mo
 void createLevel(int lvl);
 
 void horizonMoveObj(TObject *obj);                              // horizontal speed for enemie
+void marioCollision();                                          // chekign for collision between mario and other objects.
+void deleteMoving(int i);                                       // deleting enemie if if was defeated(if mario jumps onto enemie from above)
 
 void setCursor(int x,int y);
 void hideCursor(void);
@@ -66,6 +68,7 @@ int main(void){
         initMap();
 
         vertMoveObj(&mario);
+        marioCollision();
 
         for(int i=0;i<brickLength;i++){
             putObjOnMap(brick[i]);
@@ -274,6 +277,39 @@ void horizonMoveObj(TObject *obj){
         obj[0].x-=obj[0].horizontalSpeed;
         obj[0].horizontalSpeed=-obj[0].horizontalSpeed;
     }
+}
+
+void marioCollision(){
+
+    for(int i=0;i<movingLength;i++){
+
+        if(isCollision(mario,moving[i])){
+            if( (mario.isFly==TRUE) && (mario.vertSpeed>0) 
+            && (mario.y+mario.objHeight<moving[i].y+moving[i].objHeight*0.5)){  //if mario jumps onto enemie from above
+                deleteMoving(i);
+                i--;
+                continue;
+            
+            }
+
+            else{
+                createLevel(lvl);
+            }
+
+
+        }
+
+        
+    }
+
+}
+
+void deleteMoving(int i){
+    
+    movingLength--;
+    moving[i]=moving[movingLength];
+    moving=realloc(moving,sizeof(*moving)*movingLength);
+
 }
 
 void setCursor(int x,int y){
