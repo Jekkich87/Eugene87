@@ -64,13 +64,14 @@ int main(void){
         initMap();
 
         vertMoveObj(&mario);
+
         for(int i=0;i<brickLength;i++){
             putObjOnMap(brick[i]);
         }
-        putObjOnMap(mario);
-        
 
-        if((mario.isFly==FALSE)&&(GetKeyState(VK_SPACE)<0)){                            //mario can jump)
+        putObjOnMap(mario);
+
+        if((mario.isFly==FALSE)&&(GetKeyState(VK_SPACE)<0)){                            // mario can jump)
             mario.vertSpeed=-1;
         }
 
@@ -81,8 +82,13 @@ int main(void){
             horizonMoveMap(-1);
         }
 
-        if(mario.y>mapHeight){ //if mario falls out the map, level reloading;
+        if(mario.y>mapHeight){                                                          // if mario falls out the map, level reloading;
             createLevel(lvl); 
+        }
+
+        for(int i=0;i<movingLength;i++){
+            putObjOnMap(moving[i]);                                                     // placing enemie on the map
+            vertMoveObj(moving+i);                                                      // addint ot enemie vertical speed. Now it can fall;
         }
 
         setCursor(0,0);
@@ -227,6 +233,9 @@ void createLevel(int lvl){
         initObj(brick+3,120,15,10,10,'#');
         initObj(brick+4,160,20,15,5,'#');
         initObj(brick+5,185,20,20,7,'+');                   //brick for ending level
+        movingLength=1;
+        moving=realloc(moving,sizeof(*moving)*movingLength);
+        initObj(moving+0,25,10,3,2,'o');
     }
 
     if(lvl==2){
