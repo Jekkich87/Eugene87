@@ -193,20 +193,32 @@ void vertMoveObj(TObject *obj){
     setObjPos(obj,(*obj).x,(*obj).y+(*obj).vertSpeed);
 
     for(int i=0;i<brickLength;i++){
+
         if(isCollision(*obj,brick[i])){
+            if(obj[0].vertSpeed>0){
+                (*obj).isFly=FALSE;
+            }
+
+            if((brick[i].cType=='?')&&(obj[0].vertSpeed<0)&&(obj==&mario)){                     //bricks with score now can drop score
+                brick[i].cType='-';
+                initObj(GetNewMoving(),brick[i].x,brick[i].y-3,3,2,'$');
+            }
+
             (*obj).y-=(*obj).vertSpeed;
             (*obj).vertSpeed=0;
-            (*obj).isFly=FALSE;
+
             if(brick[i].cType=='+'){
                 lvl++;
-                if(lvl>2){
+                if(lvl>3){
                     lvl=1;
                 }
                 createLevel(lvl);
                 Sleep(1000);
             }
+
             break;
         }
+
     }
 
 }
@@ -244,9 +256,25 @@ void horizonMoveMap(float dx){
 
 void createLevel(int lvl){
 
+    brickLength=0;
+    brick=realloc(brick,0);
+    movingLength=0;
+    moving=realloc(moving,0);
+
     initObj(&mario,39,10,3,3,'@');
 
-    
+    if(lvl==1){
+        brickLength=0;
+        initObj(GetNewBrick(),20,20,40,5,'#');
+        initObj(GetNewBrick(),30,10,5,3,'?');                                      // bricks with score
+        initObj(GetNewBrick(),50,10,5,3,'?');
+        initObj(GetNewBrick(),60,15,10,10,'#');
+        initObj(GetNewBrick(),100,20,20,5,'#');
+        initObj(GetNewBrick(),120,15,10,10,'#');
+        initObj(GetNewBrick(),150,20,40,5,'#');
+        initObj(GetNewBrick(),210,15,10,10,'+');                              
+
+    }
 
     if(lvl==2){
         brickLength=0;
@@ -256,7 +284,7 @@ void createLevel(int lvl){
         initObj(GetNewBrick(),80,20,20,5,'#');
         initObj(GetNewBrick(),120,15,10,10,'#');
         initObj(GetNewBrick(),150,20,40,5,'#');
-        initObj(GetNewBrick(),185,15,10,10,'+');                                   //brick for ending level
+        initObj(GetNewBrick(),185,15,10,10,'+');                                   // brick for ending level
         movingLength=0;
         //moving=realloc(moving,sizeof(*moving)*movingLength);
         initObj(GetNewMoving(),25,10,3,2,'o');
@@ -295,13 +323,19 @@ void horizonMoveObj(TObject *obj){
             return;
         }
     }
-    TObject tmp=*obj;
-    vertMoveObj(&tmp);
 
-    if(tmp.isFly==true){                                                       // checking for enemie fall. if yes - undo movement and going back 
-        obj[0].x-=obj[0].horizontalSpeed;
-        obj[0].horizontalSpeed=-obj[0].horizontalSpeed;
+    if(obj[0].cType=='o'){                                                          // if object is enemie, he will not fall from mrick. adn if score - yes;
+
+        TObject tmp=*obj;
+        vertMoveObj(&tmp);
+
+        if(tmp.isFly==true){                                                       // checking for enemie fall. if yes - undo movement and going back 
+            obj[0].x-=obj[0].horizontalSpeed;
+            obj[0].horizontalSpeed=-obj[0].horizontalSpeed;
+        }
+
     }
+
 }
 
 void marioCollision(){
