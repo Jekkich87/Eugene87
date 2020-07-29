@@ -10,6 +10,8 @@
 
 char mapField[mapHeight][mapWidth+1];
 int lvl=1;
+int scoreCount=0;
+int maxLvl;
 
 typedef struct SObject{
 
@@ -34,7 +36,7 @@ void showMap(void);
 void setObjPos(TObject *obj,float xPos, float yPos);            // setting position for player;
 void putObjOnMap(TObject obj);                                  // placing player on map
 void initObj(TObject *obj, float xPos, float yPos, 
-                     float oWidth, float oHeight,char inType);              // adding vidth and height for player char
+                     float oWidth, float oHeight,char inType);  // adding vidth and height for player char
 void vertMoveObj(TObject *obj);                                 // vertical movement of char
 
 BOOL isPosInMap(int x,int y);                                   // cheking, is position of cha ron map or not
@@ -50,6 +52,9 @@ void deleteMoving(int i);                                       // deleting enem
 TObject *GetNewBrick();                                         // automated creation new brick element
 TObject *GetNewMoving();                                        // automated creation new enemy element
 
+void playerDead();                                              // if mario dead - color red adn level restarting;
+void putScoreOnMap();                                           // displaying score count.
+
 void setCursor(int x,int y);
 void hideCursor(void);
 
@@ -58,7 +63,7 @@ int main(void){
 
     system("mode 80,25");
     system("mode con cols=80 lines=25");
-    system("color 9F");
+    
     setCursor(0,0);
     hideCursor();
 
@@ -68,6 +73,7 @@ int main(void){
 
     do{
 
+        
         initMap();
 
         vertMoveObj(&mario);
@@ -91,11 +97,11 @@ int main(void){
         }
 
         if(mario.y>mapHeight){                                                          // if mario falls out the map, level reloading;
-            createLevel(lvl); 
+            playerDead(); 
         }
 
         for(int i=0;i<movingLength;i++){
-            putObjOnMap(moving[i]);                                                     // placing enemie on the map
+           
             vertMoveObj(moving+i);                                                      // addint ot enemie vertical speed. Now it can fall;
             horizonMoveObj(moving+i);
             if(moving[i].y>mapHeight){
@@ -106,8 +112,10 @@ int main(void){
             
             
             }
-        }
 
+            putObjOnMap(moving[i]);                                                     // placing enemie on the map
+        }
+        putScoreOnMap();
         setCursor(0,0);
         
         showMap();
@@ -184,8 +192,6 @@ void initObj(TObject *obj, float xPos, float yPos, float oWidth, float oHeight,c
 
 }
 
-
-
 void vertMoveObj(TObject *obj){
 
     (*obj).isFly=TRUE;
@@ -199,9 +205,10 @@ void vertMoveObj(TObject *obj){
                 (*obj).isFly=FALSE;
             }
 
-            if((brick[i].cType=='?')&&(obj[0].vertSpeed<0)&&(obj==&mario)){                     //bricks with score now can drop score
+            if((brick[i].cType=='?')&&(obj[0].vertSpeed<0)&&(obj==&mario)){                     // bricks with score now can drop score
                 brick[i].cType='-';
                 initObj(GetNewMoving(),brick[i].x,brick[i].y-3,3,2,'$');
+                moving[movingLength-1].vertSpeed=-0.7;                                         //  score will jump out from score block
             }
 
             (*obj).y-=(*obj).vertSpeed;
@@ -209,11 +216,15 @@ void vertMoveObj(TObject *obj){
 
             if(brick[i].cType=='+'){
                 lvl++;
-                if(lvl>3){
+                if(lvl>maxLvl){
                     lvl=1;
                 }
+
+                system("color 2F");
+                Sleep(500);
+
                 createLevel(lvl);
-                Sleep(1000);
+                
             }
 
             break;
@@ -255,6 +266,8 @@ void horizonMoveMap(float dx){
 }   
 
 void createLevel(int lvl){
+    scoreCount=0;
+    system("color 9F");
 
     brickLength=0;
     brick=realloc(brick,0);
@@ -264,20 +277,28 @@ void createLevel(int lvl){
     initObj(&mario,39,10,3,3,'@');
 
     if(lvl==1){
-        brickLength=0;
+
         initObj(GetNewBrick(),20,20,40,5,'#');
-        initObj(GetNewBrick(),30,10,5,3,'?');                                      // bricks with score
-        initObj(GetNewBrick(),50,10,5,3,'?');
-        initObj(GetNewBrick(),60,15,10,10,'#');
+            initObj(GetNewBrick(),30,10,5,3,'?');                                      // bricks with score
+            initObj(GetNewBrick(),50,10,5,3,'?');
+        initObj(GetNewBrick(),60,15,40,10,'#');
+            initObj(GetNewBrick(),60,5,10,3,'-');                                      
+            initObj(GetNewBrick(),70,5,5,3,'?');
+            initObj(GetNewBrick(),75,5,5,3,'-');                                      
+            initObj(GetNewBrick(),80,5,5,3,'?');
+            initObj(GetNewBrick(),85,5,10,3,'?');
         initObj(GetNewBrick(),100,20,20,5,'#');
         initObj(GetNewBrick(),120,15,10,10,'#');
         initObj(GetNewBrick(),150,20,40,5,'#');
-        initObj(GetNewBrick(),210,15,10,10,'+');                              
+        initObj(GetNewBrick(),210,15,10,10,'+');
+
+        initObj(GetNewMoving(),25,10,3,2,'o');
+        initObj(GetNewMoving(),80,10,3,2,'o');                              
 
     }
 
     if(lvl==2){
-        brickLength=0;
+     
         //brick=realloc(brick,sizeof(*brick)*brickLength);
         initObj(GetNewBrick(),20,20,40,5,'#');
         initObj(GetNewBrick(),60,15,10,10,'#');
@@ -285,7 +306,7 @@ void createLevel(int lvl){
         initObj(GetNewBrick(),120,15,10,10,'#');
         initObj(GetNewBrick(),150,20,40,5,'#');
         initObj(GetNewBrick(),185,15,10,10,'+');                                   // brick for ending level
-        movingLength=0;
+    
         //moving=realloc(moving,sizeof(*moving)*movingLength);
         initObj(GetNewMoving(),25,10,3,2,'o');
         initObj(GetNewMoving(),80,10,3,2,'o');
@@ -296,13 +317,13 @@ void createLevel(int lvl){
     }
 
     if(lvl==3){
-        brickLength=0;
+   
         //brick=realloc(brick,brickLength);
         initObj(GetNewBrick(),20,20,40,5,'#');
         initObj(GetNewBrick(),80,15,15,10,'#');
         initObj(GetNewBrick(),120,20,20,5,'#');
         initObj(GetNewBrick(),160,20,20,7,'+');
-        movingLength=0;
+  
         //moving=realloc(moving,sizeof(*moving)*movingLength);
         initObj(GetNewMoving(),25,10,3,2,'o');
         initObj(GetNewMoving(),50,10,3,2,'o');
@@ -310,6 +331,8 @@ void createLevel(int lvl){
         initObj(GetNewMoving(),120,10,3,2,'o');
         initObj(GetNewMoving(),130,10,3,2,'o');
     }
+
+    maxLvl=3;
     
 }
 
@@ -343,18 +366,30 @@ void marioCollision(){
     for(int i=0;i<movingLength;i++){
 
         if(isCollision(mario,moving[i])){
-            if( (mario.isFly==TRUE) && (mario.vertSpeed>0) 
-            && (mario.y+mario.objHeight<moving[i].y+moving[i].objHeight*0.5)){  //if mario jumps onto enemie from above
+
+            if(moving[i].cType=='o'){
+
+                    if( (mario.isFly==TRUE) && (mario.vertSpeed>0) 
+                     && (mario.y+mario.objHeight<moving[i].y+moving[i].objHeight*0.5)){  //if mario jumps onto enemie from above
+                        scoreCount+=50;
+                        deleteMoving(i);
+                        i--;
+                        continue;
+                        
+                    }
+
+                else{
+                    playerDead();
+                }
+
+            }
+
+            if(moving[i].cType='$'){
+                scoreCount+=100;
                 deleteMoving(i);
                 i--;
                 continue;
-            
             }
-
-            else{
-                createLevel(lvl);
-            }
-
 
         }
 
@@ -385,6 +420,24 @@ TObject *GetNewMoving(){
     moving=realloc(moving,sizeof(*moving)*movingLength);
     return moving+movingLength-1;
 
+}
+
+
+void playerDead(){
+
+    system("color 4f");
+    Sleep(500);
+    createLevel(lvl);
+
+}
+
+void putScoreOnMap(){
+    char c[30];
+    sprintf(c,"Score: %d ",scoreCount);
+    int len=strlen(c);
+    for(int i=0;i<len;i++){
+        mapField[1][i+5]=c[i];
+    }
 }
 
 void setCursor(int x,int y){
