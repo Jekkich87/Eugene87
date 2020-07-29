@@ -47,6 +47,9 @@ void horizonMoveObj(TObject *obj);                              // horizontal sp
 void marioCollision();                                          // chekign for collision between mario and other objects.
 void deleteMoving(int i);                                       // deleting enemie if if was defeated(if mario jumps onto enemie from above)
 
+TObject *GetNewBrick();                                         // automated creation new brick element
+TObject *GetNewMoving();                                        // automated creation new enemy element
+
 void setCursor(int x,int y);
 void hideCursor(void);
 
@@ -95,6 +98,14 @@ int main(void){
             putObjOnMap(moving[i]);                                                     // placing enemie on the map
             vertMoveObj(moving+i);                                                      // addint ot enemie vertical speed. Now it can fall;
             horizonMoveObj(moving+i);
+            if(moving[i].y>mapHeight){
+               
+                deleteMoving(i);
+                i--;
+                continue;
+            
+            
+            }
         }
 
         setCursor(0,0);
@@ -235,27 +246,41 @@ void createLevel(int lvl){
 
     initObj(&mario,39,10,3,3,'@');
 
-    if(lvl==1){
-        brickLength=6;
-        brick=realloc(brick,brickLength);
-        initObj(brick+0,20,20,40,5,'#');
-        initObj(brick+1,60,15,10,10,'#');
-        initObj(brick+2,80,20,20,5,'#');
-        initObj(brick+3,120,15,10,10,'#');
-        initObj(brick+4,160,20,15,5,'#');
-        initObj(brick+5,185,20,20,7,'+');                                   //brick for ending level
-        movingLength=1;
-        moving=realloc(moving,sizeof(*moving)*movingLength);
-        initObj(moving+0,25,10,3,2,'o');
-    }
+    
 
     if(lvl==2){
-        brickLength=4;
-        brick=realloc(brick,brickLength);
-        initObj(brick+0,20,20,40,5,'#');
-        initObj(brick+1,80,15,15,10,'#');
-        initObj(brick+2,95,20,20,5,'#');
-        initObj(brick+3,125,20,20,7,'+');   
+        brickLength=0;
+        //brick=realloc(brick,sizeof(*brick)*brickLength);
+        initObj(GetNewBrick(),20,20,40,5,'#');
+        initObj(GetNewBrick(),60,15,10,10,'#');
+        initObj(GetNewBrick(),80,20,20,5,'#');
+        initObj(GetNewBrick(),120,15,10,10,'#');
+        initObj(GetNewBrick(),150,20,40,5,'#');
+        initObj(GetNewBrick(),185,15,10,10,'+');                                   //brick for ending level
+        movingLength=0;
+        //moving=realloc(moving,sizeof(*moving)*movingLength);
+        initObj(GetNewMoving(),25,10,3,2,'o');
+        initObj(GetNewMoving(),80,10,3,2,'o');
+        initObj(GetNewMoving(),120,10,3,2,'o');
+        initObj(GetNewMoving(),120,10,3,2,'o');
+        initObj(GetNewMoving(),165,10,3,2,'o');
+        initObj(GetNewMoving(),175,10,3,2,'o');
+    }
+
+    if(lvl==3){
+        brickLength=0;
+        //brick=realloc(brick,brickLength);
+        initObj(GetNewBrick(),20,20,40,5,'#');
+        initObj(GetNewBrick(),80,15,15,10,'#');
+        initObj(GetNewBrick(),120,20,20,5,'#');
+        initObj(GetNewBrick(),160,20,20,7,'+');
+        movingLength=0;
+        //moving=realloc(moving,sizeof(*moving)*movingLength);
+        initObj(GetNewMoving(),25,10,3,2,'o');
+        initObj(GetNewMoving(),50,10,3,2,'o');
+        initObj(GetNewMoving(),80,10,3,2,'o');
+        initObj(GetNewMoving(),120,10,3,2,'o');
+        initObj(GetNewMoving(),130,10,3,2,'o');
     }
     
 }
@@ -309,6 +334,22 @@ void deleteMoving(int i){
     movingLength--;
     moving[i]=moving[movingLength];
     moving=realloc(moving,sizeof(*moving)*movingLength);
+
+}
+
+TObject *GetNewBrick(){
+
+    brickLength++;
+    brick=realloc(brick,sizeof(*brick)*brickLength);
+    return brick+brickLength-1;
+
+}
+
+TObject *GetNewMoving(){
+
+    movingLength++;
+    moving=realloc(moving,sizeof(*moving)*movingLength);
+    return moving+movingLength-1;
 
 }
 
