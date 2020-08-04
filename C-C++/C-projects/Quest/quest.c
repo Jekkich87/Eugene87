@@ -11,11 +11,13 @@
 
 struct{
     char map[height][width+1];
+    POINT size;
 }loc;
 
 struct{
     char name[20];
     POINT pos;
+    POINT locPos;
 }player;
 
 char map[height][width+1];
@@ -24,12 +26,13 @@ void loc_LoadFormFile(char* filename);              // function to loading locat
 void showMap(void);                                 // function for displaying map
 void loc_putOnMap(void);
 
-void initPlayer(int x, int y,char* name);
+void initPlayer(int xLoc,int yLoc,int x, int y,char* name);
 void player_putOnMap(void);
 
 void player_Control(void);
 void player_SavePos(void);
 void player_LoadPos(char* name);
+void player_LoadLoc();
 
 void setCursor(int x,int y);
 void hideCursor(void);
@@ -42,8 +45,8 @@ int main(void) {
     system("mode 80,25");
     system("mode con cols=80 lines=25");
 
-    loc_LoadFormFile("map_0_0.txt");
     player_LoadPos("Player");
+    player_LoadLoc(); 
 
     do{
         player_Control();
@@ -61,23 +64,29 @@ int main(void) {
 
 void loc_LoadFormFile(char* filename){
 
-    //memset(&loc.map,' ',sizeof(loc));            // filling in the map by space char;
+    memset(&loc.map,' ',sizeof(loc));            // filling in the map by space char;
     for(int i=0;i<height;i++){
         loc.map[i][width]='\0';
     }
     FILE* f=fopen(filename,"r");
     char c[80];
     int line=0;
+    loc.size.x=0;
+    loc.size.y=0;
     while(!feof(f)){
         fgets(c,width,f);
         int cnt=strlen(c);
-        if(c[cnt]=='\n'){
+        if(c[cnt-1]=='\n'){
             cnt--;
         }
         strncpy(loc.map[line],c,cnt);
         line++;
-        
+        if(cnt>loc.size.x-2){
+            loc.size.x=cnt;
+        }
+        loc.size.y=line;
     }
+    
     fclose(f);
 
     loc.map[height-1][width-1]='\0';    
@@ -95,10 +104,13 @@ void loc_putOnMap(void){
     memcpy(map,loc.map,sizeof(map));
 }
 
-void initPlayer(int x, int y,char* name){
+void initPlayer(int xLoc,int yLoc,int x, int y,char* name){
+
     player.pos.x=x;
     player.pos.y=y;
     sprintf(player.name,name);
+    player.locPos.x=xLoc;
+    player.locPos.y=yLoc;
 }
 
 void player_putOnMap(void){
@@ -115,6 +127,27 @@ void player_Control(void){
     if(map[player.pos.y][player.pos.x]!=' '){
         player.pos=old;
     }
+    if(player.pos.x>(loc.size.x-2)){                          // if player leave current location, new location will be downloaded.
+        player.locPos.x++;
+        player_LoadLoc();
+        player.pos.x=1;
+    }
+    if(player.pos.x<1){                          
+        player.locPos.x--;
+        player_LoadLoc();
+        player.pos.x=loc.size.x-2;
+    }
+    if(player.pos.y>(loc.size.y-2)){                          // if player leave current location, new location will be downloaded.
+        player.locPos.y++;
+        player_LoadLoc();
+        player.pos.y=1;
+    }
+    if(player.pos.y<1){                          
+        player.locPos.y--;
+        player_LoadLoc();
+        player.pos.y=loc.size.y-2;
+    }
+
 }
 
 void player_SavePos(void){
@@ -128,12 +161,18 @@ void player_SavePos(void){
 void player_LoadPos(char* name){
     FILE* f=fopen(name,"rb");
     if(f==NULL){
-        initPlayer(5,5,name);
+        initPlayer(0,0,5,5,name);
     }
     else{
         fread(&player,1,sizeof(player),f);
     }
     fclose(f);
+}
+
+void player_LoadLoc(){
+    char c[100];
+    sprintf(c,"map_%d_%d.txt",player.locPos.x,player.locPos.y);
+    loc_LoadFormFile(c);
 }
 
 void setCursor(int x,int y){
