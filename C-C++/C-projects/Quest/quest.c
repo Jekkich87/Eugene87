@@ -20,6 +20,15 @@ struct{
     POINT locPos;
 }player;
 
+typedef struct{
+    char name[20];
+    char oType;
+    POINT pos;
+}TObj;
+
+TObj* obj=NULL;
+int objCNT=0;
+
 char map[height][width+1];
 
 void loc_LoadFormFile(char* filename);              // function to loading location from file
@@ -28,11 +37,15 @@ void loc_putOnMap(void);
 
 void initPlayer(int xLoc,int yLoc,int x, int y,char* name);
 void player_putOnMap(void);
-
 void player_Control(void);
 void player_SavePos(void);
 void player_LoadPos(char* name);
 void player_LoadLoc();
+
+TObj* obj_Add(void);                               // adding objects on map;
+void obj_LoadFromFile(char* name);                 // downloading objects on map
+void obj_PutOnMap(void);
+
 
 void setCursor(int x,int y);
 void hideCursor(void);
@@ -50,7 +63,8 @@ int main(void) {
 
     do{
         player_Control();
-        loc_putOnMap();      
+        loc_putOnMap();
+        obj_PutOnMap();      
         player_putOnMap();
         showMap();
         Sleep(50);
@@ -170,9 +184,45 @@ void player_LoadPos(char* name){
 }
 
 void player_LoadLoc(){
+
     char c[100];
     sprintf(c,"map_%d_%d.txt",player.locPos.x,player.locPos.y);
     loc_LoadFormFile(c);
+
+    sprintf(c,"obj_%d_%d.txt",player.locPos.x,player.locPos.y);
+    obj_LoadFromFile(c);
+
+}
+
+TObj* obj_Add(void){
+    objCNT++;
+    obj=realloc(obj,sizeof(*obj)*objCNT);
+    return obj+objCNT-1;
+}
+
+void obj_LoadFromFile(char* name){
+    objCNT=0;
+    obj=realloc(obj,0);
+    TObj* tmp;
+
+    FILE* f=fopen(name,"rt");
+
+    if(f){
+        while(!feof(f)){
+            tmp=obj_Add();
+            fgets(tmp->name,1000,f);
+            fscanf(f,"%c",&tmp->oType);
+            fscanf(f,"%d",&tmp->pos.x);
+            fscanf(f,"%d\n",&tmp->pos.y);
+        }
+    }
+    fclose(f);
+}
+
+void obj_PutOnMap(void){
+    for(int i=0;i<objCNT;i++){
+        map[obj[i].pos.y][obj[i].pos.x]=obj[i].oType;
+    }
 }
 
 void setCursor(int x,int y){
