@@ -18,6 +18,7 @@ struct{
     char name[20];
     POINT pos;
     POINT locPos;
+    TItem items[20];
 }player;
 
 typedef struct{
@@ -25,6 +26,10 @@ typedef struct{
     char oType;
     POINT pos;
 }TObj;
+
+typedef struct{
+    char name[20];
+}TItem;                                              // 
 
 TObj* obj=NULL;
 int objCNT=0;
@@ -128,10 +133,20 @@ void initPlayer(int xLoc,int yLoc,int x, int y,char* name){
     sprintf(player.name,name);
     player.locPos.x=xLoc;
     player.locPos.y=yLoc;
+    memset(player.items,0,sizeof(player.items));
 }
 
 void player_putOnMap(void){
     map[player.pos.y][player.pos.x]='A';
+
+    static int dx=55;
+    for(int k=0;k<20;k++){
+        for(int i=0;i<20;i++){
+            if((player.items[k].name[i!=0])&&(player.items[k].name[i]!='\n')){
+                map[k][dx+i]=player.items[k].name[i];
+            }
+        }
+    }
 }
 
 void player_Control(void){
