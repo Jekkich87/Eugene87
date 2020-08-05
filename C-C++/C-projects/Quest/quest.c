@@ -31,8 +31,8 @@ int objCNT=0;
 
 char map[height][width+1];
 
-void loc_LoadFormFile(char* filename);              // function to loading location from file
-void showMap(void);                                 // function for displaying map
+void loc_LoadFormFile(char* filename);               // function to loading location from file
+void showMap(void);                                  // function for displaying map
 void loc_putOnMap(void);
 
 void initPlayer(int xLoc,int yLoc,int x, int y,char* name);
@@ -42,10 +42,11 @@ void player_SavePos(void);
 void player_LoadPos(char* name);
 void player_LoadLoc();
 
-TObj* obj_Add(void);                               // adding objects on map;
-void obj_LoadFromFile(char* name);                 // downloading objects on map
+TObj* obj_Add(void);                                // adding objects on map;
+void obj_LoadFromFile(char* name);                  // downloading objects on map
 void obj_PutOnMap(void);
-
+TObj* obj_GetByXY(int x,int y);                     // receiving coordinations about objects (NPC and doors)
+void obj_StartDialog(TObj* obj);                    // starting dialog with npc
 
 void setCursor(int x,int y);
 void hideCursor(void);
@@ -57,6 +58,8 @@ int main(void) {
     system("cls");
     system("mode 80,25");
     system("mode con cols=80 lines=25");
+
+    hideCursor();
 
     player_LoadPos("Player");
     player_LoadLoc(); 
@@ -78,7 +81,7 @@ int main(void) {
 
 void loc_LoadFormFile(char* filename){
 
-    memset(&loc.map,' ',sizeof(loc));            // filling in the map by space char;
+    memset(&loc.map,' ',sizeof(loc));                 // filling in the map by space char;
     for(int i=0;i<height;i++){
         loc.map[i][width]='\0';
     }
@@ -139,7 +142,9 @@ void player_Control(void){
     if(GetKeyState(VK_LEFT)<0){player.pos.x--;}
     if(GetKeyState(VK_RIGHT)<0){player.pos.x++;}
     if(map[player.pos.y][player.pos.x]!=' '){
+        TObj* obj=obj_GetByXY(player.pos.x,player.pos.y);
         player.pos=old;
+        obj_StartDialog(obj);
     }
     if(player.pos.x>(loc.size.x-2)){                          // if player leave current location, new location will be downloaded.
         player.locPos.x++;
@@ -224,6 +229,45 @@ void obj_PutOnMap(void){
         map[obj[i].pos.y][obj[i].pos.x]=obj[i].oType;
     }
 }
+
+TObj* obj_GetByXY(int x,int y){
+    for(int i=0;i<objCNT;i++){
+        if((obj[i].pos.x==x)&&(obj[i].pos.y==y)){
+            return obj+i;
+        }
+        
+    }
+    return NULL;
+}
+
+void obj_StartDialog(TObj* obj){
+    if(obj==NULL){
+        return;
+    }
+
+    char answ;
+
+    do{
+        system("cls");
+        printf("%s\n",obj->name);
+        if(obj->oType=='/'){
+            printf("\nOpen the door?\n");
+            printf("1-Yes\n");
+            printf("0-No\n");
+            answ=getch();
+            if(answ=='1'){
+                player.pos.x+=(obj->pos.x-player.pos.x)*2;
+                player.pos.y+=(obj->pos.y-player.pos.y)*2;
+                answ='0';
+            }
+            else{
+                answ='0';
+            }
+        }
+    }while(answ!='0');
+
+}
+
 
 void setCursor(int x,int y){
 
