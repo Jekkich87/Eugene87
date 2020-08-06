@@ -2,7 +2,14 @@ Warehouse Owner
 N
 35
 9
+-
+-
+0
+Warehouse Key
 Warehouse door
 /
 28
 11
+To enter need Warehouse Key
+Warehouse Key
+1

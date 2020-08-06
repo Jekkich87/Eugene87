@@ -14,6 +14,10 @@ struct{
     POINT size;
 }loc;
 
+typedef struct{
+    char name[20];
+}TItem;
+
 struct{
     char name[20];
     POINT pos;
@@ -25,11 +29,13 @@ typedef struct{
     char name[20];
     char oType;
     POINT pos;
+    char item_Message[200];
+    TItem item_Need;
+    int item_CNT;
+    TItem item_Given;
 }TObj;
 
-typedef struct{
-    char name[20];
-}TItem;                                              // 
+                                              // 
 
 TObj* obj=NULL;
 int objCNT=0;
@@ -52,6 +58,9 @@ void obj_LoadFromFile(char* name);                  // downloading objects on ma
 void obj_PutOnMap(void);
 TObj* obj_GetByXY(int x,int y);                     // receiving coordinations about objects (NPC and doors)
 void obj_StartDialog(TObj* obj);                    // starting dialog with npc
+
+int player_ItemCount(TItem item);                  // counting how many need items plaer has
+void player_GetItem(TItem item);                   // getting item form NPC
 
 void setCursor(int x,int y);
 void hideCursor(void);
@@ -142,7 +151,7 @@ void player_putOnMap(void){
     static int dx=55;
     for(int k=0;k<20;k++){
         for(int i=0;i<20;i++){
-            if((player.items[k].name[i!=0])&&(player.items[k].name[i]!='\n')){
+            if((player.items[k].name[i]!=0)&&(player.items[k].name[i]!='\n')){
                 map[k][dx+i]=player.items[k].name[i];
             }
         }
@@ -157,9 +166,18 @@ void player_Control(void){
     if(GetKeyState(VK_LEFT)<0){player.pos.x--;}
     if(GetKeyState(VK_RIGHT)<0){player.pos.x++;}
     if(map[player.pos.y][player.pos.x]!=' '){
+
+        if(map[player.pos.y][player.pos.x]=='a'){
+            TItem item;
+            sprintf(item.name,"Apple");
+            player_GetItem(item);
+            Sleep(500);
+        }
+
         TObj* obj=obj_GetByXY(player.pos.x,player.pos.y);
         player.pos=old;
         obj_StartDialog(obj);
+
     }
     if(player.pos.x>(loc.size.x-2)){                          // if player leave current location, new location will be downloaded.
         player.locPos.x++;
@@ -234,6 +252,16 @@ void obj_LoadFromFile(char* name){
             fscanf(f,"%c",&tmp->oType);
             fscanf(f,"%d",&tmp->pos.x);
             fscanf(f,"%d\n",&tmp->pos.y);
+
+            fgets(tmp->item_Message,1000,f);
+            fgets(tmp->item_Need.name,1000,f);
+            fscanf(f,"%d\n",&tmp->item_CNT);
+
+            fgets(tmp->item_Given.name,1000,f);
+            int len=strlen(tmp->item_Given.name);
+            if(tmp->item_Given.name[len-1]=='\n'){
+                tmp->item_Given.name[len-1]=='\0';
+            }
         }
     }
     fclose(f);
@@ -263,24 +291,86 @@ void obj_StartDialog(TObj* obj){
     char answ;
 
     do{
+
         system("cls");
         printf("%s\n",obj->name);
+
         if(obj->oType=='/'){
-            printf("\nOpen the door?\n");
-            printf("1-Yes\n");
-            printf("0-No\n");
-            answ=getch();
-            if(answ=='1'){
-                player.pos.x+=(obj->pos.x-player.pos.x)*2;
-                player.pos.y+=(obj->pos.y-player.pos.y)*2;
-                answ='0';
+
+            if(player_ItemCount(obj->item_Need)<obj->item_CNT){
+                printf("\n%s\n",obj->item_Message);
+                printf("0-Exit\n");
+                answ=getch();
             }
+
             else{
-                answ='0';
+                printf("\nEnter the door?\n");
+                printf("1 - Yes\n");
+                printf("0 - No");
+                answ=getch();
+                if(answ=='1'){
+                    player.pos.x+=(obj->pos.x-player.pos.x)*2;
+                    player.pos.y+=(obj->pos.y-player.pos.y)*2;
+                    answ='0';
+                }
+            }       
+            
+        }
+
+        else if(obj->oType=='N'){
+            
+            if(player_ItemCount(obj->item_Need)<obj->item_CNT){
+                printf("\n%s\n",obj->item_Message);
+                printf("0-Exit\n");
+                answ=getch();
+            }
+
+            else{
+                printf("\nNeed a %s?\n",obj->item_Given.name);
+                printf("1 - Yes\n");
+                printf("0 - No");
+                answ=getch();
+                if(answ=='1'){
+                    TItem item;
+                    sprintf(item.name,obj->item_Given.name);
+                    if(player_ItemCount(item)==0){
+                        player_GetItem(item);
+                    }
+                    answ='0';
+                }
+
             }
         }
+
+        else{
+            answ='0';
+        }
+
     }while(answ!='0');
 
+}
+
+int player_ItemCount(TItem item){
+    int cnt=0;
+    int len=strlen(item.name);
+    if(item.name[len-1]=='\n'){
+        len--;
+    }
+    for(int i=0;i<20;i++){
+        if(strncmp(item.name,player.items[i].name,len)==0){
+            cnt++;
+        }
+    }
+    return cnt;
+}
+
+void player_GetItem(TItem item){
+    for(int i=0;i<20;i++){
+        if(player.items[i].name[0]==0){
+            sprintf(player.items[i].name,item.name);
+            return;
+        }
+    }
 }
 
 
