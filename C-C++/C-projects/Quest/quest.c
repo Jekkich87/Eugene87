@@ -61,6 +61,7 @@ void obj_StartDialog(TObj* obj);                    // starting dialog with npc
 
 int player_ItemCount(TItem item);                  // counting how many need items plaer has
 void player_GetItem(TItem item);                   // getting item form NPC
+int player_GiveItems(TItem item, int delCNT);      // player gives items to NPC
 
 void setCursor(int x,int y);
 void hideCursor(void);
@@ -318,7 +319,7 @@ void obj_StartDialog(TObj* obj){
         }
 
         else if(obj->oType=='N'){
-            
+
             if(player_ItemCount(obj->item_Need)<obj->item_CNT){
                 printf("\n%s\n",obj->item_Message);
                 printf("0-Exit\n");
@@ -333,7 +334,7 @@ void obj_StartDialog(TObj* obj){
                 if(answ=='1'){
                     TItem item;
                     sprintf(item.name,obj->item_Given.name);
-                    if(player_ItemCount(item)==0){
+                    if((player_ItemCount(item)==0)&&(player_GiveItems(obj->item_Need,obj->item_CNT)>0)){
                         player_GetItem(item);
                     }
                     answ='0';
@@ -369,6 +370,24 @@ void player_GetItem(TItem item){
         if(player.items[i].name[0]==0){
             sprintf(player.items[i].name,item.name);
             return;
+        }
+    }
+}
+
+int player_GiveItems(TItem item, int delCNT){
+    int cnt=player_ItemCount(item);
+    if(delCNT>cnt) {return 0;}
+    int len=strlen(item.name);
+    if(item.name[len-1]=='\n'){
+        len--;
+    }
+    for(int i=0;i<20;i++){
+        if(strncmp(item.name,player.items[i].name,len)==0){
+            memset(player.items[i].name,0,sizeof(player.items[i].name));
+            delCNT--;
+            if(delCNT<1){
+                return 1;
+            }
         }
     }
 }
