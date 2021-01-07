@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoList"
         mc:Ignorable="d"
-        Title="My ToDo List" Height="450" Width="800">
+        Title="My ToDo List" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dtgTodoListGrid" FontSize="16">
+        <DataGrid x:Name="dtgTodoListGrid" FontSize="16" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Creation Date" Width="180" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridCheckBoxColumn Header="Status" Width="80" IsReadOnly="False"></DataGridCheckBoxColumn>
-                <DataGridTextColumn Header="Notations" Width="*" IsReadOnly="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Creation Date" Width="180" IsReadOnly="True" Binding="{Binding Path = CreationDate}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Status" Width="80" IsReadOnly="False" Binding="{Binding Path = IsDone}"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="Notations" Width="*" IsReadOnly="False" Binding="{Binding Path = Notes}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

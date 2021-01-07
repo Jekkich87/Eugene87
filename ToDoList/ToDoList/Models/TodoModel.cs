@@ -8,9 +8,11 @@ namespace ToDoList.Models
 {
     class TodoModel
     {
-        public DateTime CreationDate { get; set; } = DateTime.Now;
 
         private bool _isDone;
+        private string _notes;
+
+        public DateTime CreationDate { get; set; } = DateTime.Now;
 
         public bool IsDone
         {
@@ -18,9 +20,7 @@ namespace ToDoList.Models
             set { _isDone = value; }
         }
 
-        private string _notes;
-
-        public string _Notes
+        public string Notes
         {
             get { return _notes; }
             set { _notes = value; }
