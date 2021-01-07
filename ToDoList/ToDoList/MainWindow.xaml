@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="My ToDo List" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="dtgTodoListGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Creation Date" Width="180"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Checker" Width="60"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="Notations" Width="570"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
